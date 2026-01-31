@@ -15,7 +15,7 @@
 
 
 	
-  <style>
+ <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 
   /* Título principal com efeito neon animado */
@@ -106,31 +106,28 @@
     100% { background-position: 0% 50%; }
   }
 
- input[type="text"],
-input[type="password"] {
-  width: 290px;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  background: #121212; /* fundo escuro */
-  color: #00ffd5;      /* texto neon */
-  font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
-  text-align: center;
+  input[type="text"],
+  input[type="password"] {
+    width: 290px;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: #121212;
+    color: #00ffd5;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 0 10px #00ffd5, 0 0 20px #00ff88;
+    outline: none;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
 
-  /* efeito neon */
-  box-shadow: 0 0 10px #00ffd5, 0 0 20px #00ff88;
-  outline: none;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-/* efeito ao focar */
-input[type="text"]:focus,
-input[type="password"]:focus {
-  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
-  transform: scale(1.05);
-}
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    transform: scale(1.05);
+  }
 
   #conteudo-principal {
     display: none;
@@ -168,9 +165,9 @@ input[type="password"]:focus {
   }
 
   button {
-    background-color: rgba(0, 255, 213, 0.1);
-    color: #00ffd5;
-    border: 1px solid #00ffd5;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid #ffffff;
     padding: 14px;
     border-radius: 8px;
     font-weight: bold;
@@ -179,15 +176,15 @@ input[type="password"]:focus {
     margin: 5px;
     width: 100%;
     max-width: 280px;
-    box-shadow: 0 0 12px #00ffd5;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
     letter-spacing: 1px;
-    backdrop-filter: blur(6px); /* efeito glassmorphism */
+    backdrop-filter: blur(6px);
   }
 
   button:hover {
-    background-color: rgba(0, 255, 213, 0.2);
-    box-shadow: 0 0 20px #00ffd5;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     transform: scale(1.05);
   }
 
@@ -224,81 +221,174 @@ input[type="password"]:focus {
     transition: all 0.3s ease-in-out;
   }
 
+  /* Responsividade corrigida para celular */
   @media (max-width: 480px) {
-    #infoConcursoContainer { padding-top: 20vh; }
-    #infoConcurso { font-size: 1.4rem; }
-    h1 { font-size: 18px; }
+    #infoConcursoContainer { padding-top: 5px; }   /* 🔹 reduzido */
+    #infoConcurso { font-size: 1.2rem; margin: 5px 0; }
+    h1 { font-size: 18px; margin: 5px 0; }
+    #subtituloPrincipal { font-size: 14px; margin: 5px 0; }
     #entradaTopo {
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      padding: 10px;
+      gap: 6px;
+      padding: 5px;
     }
   }
-  
-  .botao-3d {
-  background: linear-gradient(135deg, #00ffd5, #0088ff);
-  color: #000;
+
+  .botao-3d:hover {
+    background: linear-gradient(145deg, #222, #333);
+    transform: translateY(-4px) scale(1.07);
+    box-shadow:
+      8px 8px 16px #0d0d0d,
+      -8px -8px 16px #3a3a3a,
+      inset 0 0 12px rgba(255, 255, 255, 0.3);
+    -webkit-text-stroke: 0.6px #e0e0e0;
+  }
+
+ .botao-3d:active {
+  transform: translateY(2px) scale(0.96);
+  box-shadow:
+    inset 4px 4px 8px #0d0d0d,
+    inset -4px -4px 8px #3a3a3a;
+  -webkit-text-stroke: 0.6px #d0d0d0; /* contorno branco suave */
+}
+
+/* Status */
+#statusAtualizacao {
+  margin-top: 15px;
+  padding: 10px;
   font-weight: bold;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  /* efeito 3D */
-  box-shadow: 
-    0 6px 0 #006666,   /* sombra sólida para efeito de profundidade */
-    0 6px 15px rgba(0, 255, 213, 0.6); /* brilho */
-  transition: all 0.2s ease;
+  font-size: 16px;
+  border-radius: 6px;
+  background-color: #111;
+  color: #00ffd5;
+  border: 1px solid #00ffd5;
 }
 
-.botao-3d:hover {
-  background: linear-gradient(135deg, #00ffd5, #00ff88);
-  transform: translateY(-3px);
-  box-shadow: 
-    0 9px 0 #006666,
-    0 12px 20px rgba(0, 255, 213, 0.8);
+
+
+/* Container principal */
+#resultadoDinamico {
+  margin-top: 15px;
 }
 
-.botao-3d:active {
-  transform: translateY(3px);
-  box-shadow: 
-    0 3px 0 #006666,
-    0 6px 10px rgba(0, 255, 213, 0.6);
+/* Título do concurso */
+#resultadoDinamico h3 {
+  color: #00ffd5;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #00ffd5;
+  display: inline-block;
 }
 
-#cadastro {
-  width: 90%;
-  max-width: 420px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 12px;
+/* Grid das dezenas */
+.dezenas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(36px, 1fr)); /* 🔹 caixas um pouco maiores */
+  gap: 3px;               
+  margin: 5px auto;        /* centraliza e reduz margem lateral */
+  width: 90%;              /* 🔹 ocupa quase toda a tela em celular */
+  max-width: 340px;        /* 🔹 largura máxima padrão */
+  background-color: #111;  
+  border: 1px solid #00ffd5;
+  border-radius: 6px;
+  padding: 8px;
+}
 
-  /* Moldura neon */
-  border: 2px solid #00ffd5;
-  box-shadow: 0 0 20px #00ffd5, inset 0 0 10px #00ffd5;
-
-  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
-  color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
+/* Cada dezena */
+.dezena-input {
+  background-color: #000;
+  font-weight: bold;
+  font-family: 'Orbitron', Arial, sans-serif;
+  color: #FFA500;
   text-align: center;
-  animation: fadeInMain 1s ease forwards;
+  border: 1px solid #00ffd5;
+  border-radius: 4px;
+  padding: 3px 6px;        /* 🔹 espaço interno ajustado */
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Último jogo sugerido */
+.jogo-sugerido {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* Bloco final com array */
+.bloco-final {
+  margin-top: 15px;
+  padding: 8px;
+  background-color: #111;
+  border: 1px solid #00ffd5;
+  border-radius: 6px;
+  color: #ddd;
+  width: 90%;              /* 🔹 ocupa quase toda a tela em celular */
+  max-width: 360px;        /* 🔹 largura máxima padrão */
+  margin-left: auto;
+  margin-right: auto;      /* centraliza */
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .dezenas-grid {
+    max-width: 420px;      /* 🔹 tablets/PC médio: mais largo */
+  }
+  .bloco-final {
+    max-width: 440px;      /* 🔹 acompanha largura maior */
+  }
+}
+
+@media (min-width: 1200px) {
+  .dezenas-grid {
+    max-width: 500px;      /* 🔹 desktop grande: ainda mais largo */
+  }
+  .bloco-final {
+    max-width: 520px;      /* 🔹 acompanha largura maior */
+  }
 }
 
 
 
 
-  
-  
+#statusAtualizacao {
+  display: block;
+  width: 90%;              /* 🔹 em telas pequenas ocupa quase toda a largura */
+  max-width: 320px;        /* 🔹 limite em telas grandes */
+  margin: 10px auto;       /* 🔹 centraliza horizontalmente */
+  text-align: center;
+  background-color: #111;
+  color: #00aa00;
+  padding: 6px 12px;
+  border: 1px solid #00ffd5;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  #statusAtualizacao {
+    width: 60%;            /* 🔹 em tablets/PCs ocupa 60% da largura */
+    max-width: 400px;      /* 🔹 pode ficar um pouco mais largo */
+  }
+}
+
+@media (min-width: 1200px) {
+  #statusAtualizacao {
+    width: 40%;            /* 🔹 em telas muito grandes ocupa menos espaço */
+    max-width: 500px;      /* 🔹 limite maior para desktop */
+  }
+}
+
+
+
 </style>
+
 </head>
 
 <body>
  <div id="splash">
-    <h2>"Mega-Sena" Inteligente</h2>
+    <h2>Sorteio Inteligente Lotofácil</h2>
     <p>Bem-vindo!</p>
   </div>
 
@@ -324,12 +414,12 @@ input[type="password"]:focus {
   
 
   <div id="conteudo-principal">
-<h1 id="tituloPrincipal" class="neon-titulo">⚡ "MEGA-SENA" - SORTEIO LÓGICO</h1>
+<h1 id="tituloPrincipal" class="neon-titulo">⚡ SORTEIO LÓGICO LOTOFÁCIL ⚡</h1>
 	<p id="subtituloPrincipal" style="position: relative; top: -9px;">
   Sua "SORTE" com Lógica!!!
 </p>
 <h1 style="font-size: 18px; margin-top: 4px;">
-  Digite manual ou pelos botões até 15 números de 1 a 60
+  Digite manual ou pelos botões até 20 números de 1 a 25
 </h1>
 <div id="infoConcursoContainer">
     <div id="infoConcurso"></div>
@@ -353,32 +443,41 @@ input[type="password"]:focus {
   <input type="text" />
   <input type="text" />
   <input type="text" />
+  
 </div>
 
 		
 
     <div class="painel-botoes">
-      <button onclick="importarUltimos()">📥 Importar Último Concurso</button>
-      <button onclick="buscarConcursoEspecifico()">🔍 Buscar Concursos</button>
-      <button onclick="jogosInversosALogica()">🧪 Jogos Inversos à Lógica</button>
-      <button onclick="sorteioBitcoin()">🏆 Ganhador estilo Bitcoin</button>
-      <button onclick="avaliarConjuntoPython()">🧠 Avaliar jogo</button>
-          
-      <button onclick="verTriosMaisComuns()">📊 Ver trios mais comuns</button>
-      <button onclick="prepararPromissor()">🎯 Jogos Promissores</button>
-      <button onclick="gerarJogosPromissores(10)">📈 Estratégias Otimizadas</button>
-      <button onclick="sortearComFrequencia()">📊 Probabilidade Histórica</button>
-	  <button onclick="montarJogosMega()">📊 Combinação</button>
-      <button id="btnSortear">🎯 Sortear Lógico</button>
-	  <button onclick="limparTudo()">🔄 Apagar</button>
+      <button onclick="importarUltimos()"class="botao-3d">📥 Importar Último Concurso</button>
+      <button onclick="buscarConcursoEspecifico()" class="botao-3d" >🔍 Buscar Concursos</button>
+      <button onclick="jogosInversosALogica()" class="botao-3d" >🧪 Jogos Inversos à Lógica</button>
+      <button onclick="sorteioBitcoin()"class="botao-3d">🏆 Ganhador Estilo Bitcoin</button>
+      <button onclick="avaliarConjuntoPython()"class="botao-3d">🧠 Avaliar jogo</button>
+    
+      
+      <button onclick="verTriosMaisComuns()" class="botao-3d">📊 Ver trios mais comuns</button>
+      <button onclick="prepararPromissor()" class="botao-3d">🎯 Jogos Promissores</button>
+      <button onclick="gerarJogosPromissores(10)" class="botao-3d">📈 Estratégias Otimizadas</button>
+      <button onclick="sortearComFrequencia()" class="botao-3d">📊 Probabilidade Histórica</button>
+      <button id="btnSortear" class="botao-3d">🎯 Sorteio Lógico</button>
+	  <button onclick="montarJogosLotofacil()" class="botao-3d">📊 Gerar Combinações Lotofácil</button>
+	  <button onclick="limparTudo()" class="botao-3d">🔄 Apagar Todos concursos gerados</button>
 	 
     </div>
 	
-	<button onclick="atualizarTodosConcursos()" class="botao-3d">
+	<script src="js/lotofacil.js"></script>
+	
+	<!-- Botão -->
+<button onclick="atualizarTodosConcursos()" class="botao-3d">
   Atualizar Concursos
 </button>
 
-<div id="statusAtualizacao" style="margin-top: 10px; font-weight: bold;"></div>
+<!-- Área de status -->
+<div id="statusAtualizacao"></div>
+
+<!-- Área de resultados -->
+<div id="areaResultados"></div>
 
 
  
@@ -479,155 +578,7 @@ function copiarPix() {
   document.getElementById("conteudo-principal").style.display = "block";
 }
 
-// Função para gerar combinações de k elementos dentro de um array
-function gerarCombinacoes(array, k) {
-  const resultados = [];
 
-  function backtrack(inicio, atual) {
-    if (atual.length === k) {
-      resultados.push([...atual]);
-      return;
-    }
-    for (let i = inicio; i < array.length; i++) {
-      atual.push(array[i]);
-      backtrack(i + 1, atual);
-      atual.pop();
-    }
-  }
-
-  backtrack(0, []);
-  return resultados;
-}
-
-// Função auxiliar para gerar combinações únicas de k elementos
-function gerarCombinacoes(array, k) {
-  const resultados = [];
-
-  function backtrack(inicio, atual) {
-    if (atual.length === k) {
-      resultados.push([...atual]);
-      return;
-    }
-    for (let i = inicio; i < array.length; i++) {
-      atual.push(array[i]);
-      backtrack(i + 1, atual);
-      atual.pop();
-    }
-  }
-
-  backtrack(0, []);
-  return resultados;
-}
-
-// Função auxiliar para gerar combinações únicas de k elementos
-function gerarCombinacoes(array, k) {
-  const resultados = [];
-
-  function backtrack(inicio, atual) {
-    if (atual.length === k) {
-      resultados.push([...atual]);
-      return;
-    }
-    for (let i = inicio; i < array.length; i++) {
-      atual.push(array[i]);
-      backtrack(i + 1, atual);
-      atual.pop();
-    }
-  }
-
-  backtrack(0, []);
-  return resultados;
-}
-
-// Função auxiliar para gerar combinações únicas de k elementos
-function gerarCombinacoes(array, k) {
-  const resultados = [];
-
-  function backtrack(inicio, atual) {
-    if (atual.length === k) {
-      resultados.push([...atual]);
-      return;
-    }
-    for (let i = inicio; i < array.length; i++) {
-      atual.push(array[i]);
-      backtrack(i + 1, atual);
-      atual.pop();
-    }
-  }
-
-  backtrack(0, []);
-  return resultados;
-}
-
-// Função principal: lê de 7 a 15 números dos inputs do topo e monta os jogos de 6 dezenas
-function montarJogosMega() {
-  const inputsTopo = document.querySelectorAll("#entradaTopo input");
-  const numerosEscolhidos = [];
-
-  // Lê os valores dos inputs
-  inputsTopo.forEach(input => {
-    const val = parseInt(input.value, 10);
-    if (!isNaN(val) && val >= 1 && val <= 60) {
-      numerosEscolhidos.push(val);
-    }
-  });
-
-  // Verifica se foram digitados entre 7 e 15 números válidos
-  if (numerosEscolhidos.length < 7 || numerosEscolhidos.length > 15) {
-    alert("Você deve inserir entre 7 e 15 números válidos (entre 1 e 60).");
-    return;
-  }
-
-  // Ordena os números para consistência
-  const ordenados = [...numerosEscolhidos].sort((a, b) => a - b);
-
-  // Gera todas as combinações possíveis de 6 dezenas dentro dos escolhidos
-  let jogos = gerarCombinacoes(ordenados, 6);
-
-  // Remove duplicados (garantia extra)
-  const vistos = new Set();
-  jogos = jogos.filter(jogo => {
-    const chave = jogo.join("-");
-    if (vistos.has(chave)) return false;
-    vistos.add(chave);
-    return true;
-  });
-
-  // Exibe os jogos dinamicamente na página
-  const container = document.getElementById("jogosGerados");
-  container.innerHTML = "";
-
-  const titulo = document.createElement("div");
-  titulo.textContent = `📊 Foram gerados ${jogos.length} jogos de 6 dezenas a partir dos ${ordenados.length} escolhidos:`;
-  titulo.style.fontWeight = "bold";
-  titulo.style.color = "#00ffd5";
-  titulo.style.marginBottom = "12px";
-  container.appendChild(titulo);
-
-  jogos.forEach((jogo, idx) => {
-    const grupo = document.createElement("div");
-    grupo.className = "grupo-jogo";
-    grupo.style.marginBottom = "12px";
-
-    // Exibe o jogo já formatado com hífen (para copiar/colar)
-    const tituloJogo = document.createElement("div");
-    tituloJogo.textContent = `Jogo ${idx + 1}: ${jogo.map(n => String(n).padStart(2, '0')).join("-")}`;
-    tituloJogo.style.fontWeight = "bold";
-    tituloJogo.style.color = "#ffcc00";
-    tituloJogo.style.marginBottom = "6px";
-    grupo.appendChild(tituloJogo);
-
-    container.appendChild(grupo);
-  });
-
-  // Mensagem final
-  const finalMsg = document.createElement("div");
-  finalMsg.textContent = "🟢 Jogos 100% Inéditos";
-  finalMsg.style.color = "#00ff00";
-  finalMsg.style.fontWeight = "bold";
-  finalMsg.style.marginTop = "20px";
-  container.appendChild(finalMsg);
-}
 
   </script>
   
@@ -666,15 +617,17 @@ document.addEventListener("DOMContentLoaded", () => {
   gerarInputsFixos();
 });
 
+//gera a quantidade de imputs do topo:
+
 function gerarInputsFixos() {
   const container = document.getElementById("entradaTopo");
   container.innerHTML = "";
 
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 20; i++) {
     const input = document.createElement("input");
     input.type = "number";
     input.min = 1;
-    input.max = 25;
+    input.max = 15;
     input.placeholder = `#${i + 1}`;
     input.id = `topo${i + 1}`;
     container.appendChild(input);
@@ -707,11 +660,13 @@ function exibirResultado(numeros) {
   atualizarTopo(numeros);
 }
 
+// ✅ Função híbrida: Local + Netlify, blindada para aceitar vários formatos
 async function sortearComFrequencia() {
   const status = document.getElementById("statusProbabilidade");
   const container = document.getElementById("jogosGerados");
   const entradaTopo = document.getElementById("entradaTopo");
 
+  // Prompt logo no início
   let qtdJogos = 0;
   const entrada = prompt("Digite a quantidade de jogos variáveis (1 a 2000):");
   if (entrada !== null) {
@@ -730,12 +685,44 @@ async function sortearComFrequencia() {
       status.style.color = "#ffd700";
     }
 
-    const url = "http://localhost/MEGASENA/MegaSena1.json";
-    const response = await fetch(url, { cache: "no-store" });
+    // 🔹 Carregamento híbrido
+    let dados = {};
+    const isNetlify = window.location.hostname.includes("netlify.app") || window.location.hostname.includes("localhost:8888");
 
-    if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    if (isNetlify) {
+      const res = await fetch("/.netlify/functions/listar_concursos");
+      const { lista } = await res.json();
 
-    const dados = await response.json();
+      for (const blob of lista.blobs) {
+        const id = blob.key.replace("concurso-", "");
+        const resConcurso = await fetch(`/.netlify/functions/listar_concursos?id=${id}`);
+        const { dados: concursoDados } = await resConcurso.json();
+        dados[id] = concursoDados;
+      }
+    } else {
+      const response = await fetch("/SorteioApp/lotofacil_combinacoes_convertido.json", { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+      dados = await response.json();
+    }
+
+    // 🔹 Normalizador universal
+    function normalizarDezenas(valor) {
+      let dezenas = null;
+      if (Array.isArray(valor)) dezenas = valor;
+      else if (Array.isArray(valor?.dezenas)) dezenas = valor.dezenas;
+      else if (typeof valor === "string") dezenas = valor.split(/[\s,;|.-]+/);
+      else if (typeof valor === "number") dezenas = [valor];
+      if (!Array.isArray(dezenas)) return [];
+      return dezenas
+        .map(v => {
+          if (v === null || v === undefined) return null;
+          const str = String(v).trim().replace(",", ".");
+          const num = Math.round(parseFloat(str));
+          if (!Number.isFinite(num)) return null;
+          return (num >= 1 && num <= 25) ? num : null;
+        })
+        .filter(n => n !== null);
+    }
 
     // Frequências e pesos
     const frequencia = {};
@@ -743,8 +730,12 @@ async function sortearComFrequencia() {
     const entradas = Object.entries(dados);
 
     entradas.forEach(([concursoId, numeros]) => {
-      if (!Array.isArray(numeros)) return;
-      numeros.forEach(num => {
+      const dezenas = normalizarDezenas(numeros);
+      if (dezenas.length !== 15) {
+        console.warn(`⚠️ Concurso ${concursoId} ignorado: formato inválido`);
+        return;
+      }
+      dezenas.forEach(num => {
         frequencia[num] = (frequencia[num] || 0) + 1;
         pesoInercial[num] = (pesoInercial[num] || 0) + parseInt(concursoId, 10);
       });
@@ -754,7 +745,6 @@ async function sortearComFrequencia() {
     const ranking = Object.entries(frequencia)
       .sort((a, b) => b[1] - a[1])
       .map(([num]) => Number(num));
-
     const top5 = new Set(ranking.slice(0, 5));
     const top10 = new Set(ranking.slice(5, 15));
 
@@ -764,12 +754,12 @@ async function sortearComFrequencia() {
       let soma = 0;
       for (let i = 1; i < s.length; i++) soma += (s[i] - s[i - 1]);
       const mediaGaps = soma / (s.length - 1);
-      const dispersaoCentro = s.reduce((acc, n) => acc + Math.abs(n - 30), 0) / s.length;
+      const dispersaoCentro = s.reduce((acc, n) => acc + Math.abs(n - 13), 0) / s.length;
       return (mediaGaps * 0.6) + (dispersaoCentro * 0.4);
     }
 
     function gerarJogoMesclado() {
-      const universe = Array.from({ length: 60 }, (_, i) => i + 1);
+      const universe = Array.from({ length: 25 }, (_, i) => i + 1);
       const maxFreq = Math.max(...universe.map(n => frequencia[n] || 0), 1);
       const pesos = universe.map(n => 1 + ((frequencia[n] || 0) / maxFreq) * 2);
 
@@ -777,52 +767,49 @@ async function sortearComFrequencia() {
       const disponiveis = [...universe];
       const pesosAtuais = [...pesos];
 
-      for (let k = 0; k < 6; k++) {
+      for (let k = 0; k < 15; k++) {
         const somaPesos = pesosAtuais.reduce((a, b) => a + b, 0);
         if (somaPesos <= 0) break;
-
         let r = Math.random() * somaPesos;
         let idx = 0;
         for (; idx < pesosAtuais.length; idx++) {
           r -= pesosAtuais[idx];
           if (r <= 0) break;
         }
-
         const escolhido = disponiveis[idx];
         escolhidos.push(escolhido);
         disponiveis.splice(idx, 1);
         pesosAtuais.splice(idx, 1);
       }
 
-      while (escolhidos.length < 6) {
-        const n = Math.floor(Math.random() * 60) + 1;
+      while (escolhidos.length < 15) {
+        const n = Math.floor(Math.random() * 25) + 1;
         if (!escolhidos.includes(n)) escolhidos.push(n);
       }
-
       return escolhidos.sort((a, b) => a - b);
     }
 
-    // Jogo fixo (6 mais frequentes) — apenas preenche os primeiros 6 inputs já existentes
+    // Jogo fixo
     const jogoFixo = Object.keys(frequencia)
       .sort((a, b) => frequencia[b] - frequencia[a])
-      .slice(0, 6)
+      .slice(0, 15)
       .map(Number);
 
-    const inputsTopo = entradaTopo.querySelectorAll("input");
-    jogoFixo.forEach((num, idx) => {
-      if (inputsTopo[idx]) {
-        inputsTopo[idx].value = num;
-        inputsTopo[idx].style.backgroundColor = "#004d33";
-        inputsTopo[idx].style.color = "#fff";
-        inputsTopo[idx].style.fontWeight = "bold";
-      }
-    });
+    if (entradaTopo) {
+      const inputs = entradaTopo.querySelectorAll("input");
+      jogoFixo.forEach((num, idx) => {
+        if (inputs[idx]) {
+          inputs[idx].value = num;
+          inputs[idx].classList.add("input-fixo");
+        }
+      });
+    }
 
     const mediaDistancia = calcularDistanciaMedia(jogoFixo);
     const scoreInercial = jogoFixo.reduce((s, n) => s + (pesoInercial[n] || 0), 0);
 
-    const SCORE_MINIMO = 500;
-    const MIN_DIST = 5, MAX_DIST = 20;
+    const SCORE_MINIMO = 3000;
+    const MIN_DIST = 2.5, MAX_DIST = 9.0;
     const MAX_TRIES = 1500;
 
     container.innerHTML = "";
@@ -832,25 +819,19 @@ async function sortearComFrequencia() {
       for (let j = 0; j < qtdJogos; j++) {
         let jogo, distancia, score;
         let tries = 0;
-
         while (true) {
           tries++;
           jogo = gerarJogoMesclado();
-          if (!Array.isArray(jogo) || jogo.length !== 6) {
+          if (!Array.isArray(jogo) || jogo.length !== 15) {
             if (tries > MAX_TRIES) break;
             continue;
           }
-
           distancia = calcularDistanciaMedia(jogo);
           score = jogo.reduce((s, n) => s + (pesoInercial[n] || 0), 0);
-
-          if (score >= SCORE_MINIMO || (distancia >= MIN_DIST && distancia <= MAX_DIST)) {
-            break;
-          }
+          if (score >= SCORE_MINIMO || (distancia >= MIN_DIST && distancia <= MAX_DIST)) break;
           if (tries > MAX_TRIES) break;
         }
-
-        if (!jogo || jogo.length !== 6) continue;
+        if (!jogo || jogo.length !== 15) continue;
         jogosValidos.push({ jogo, distancia, score, tries });
       }
 
@@ -874,19 +855,19 @@ async function sortearComFrequencia() {
           input.value = num;
           input.className = "input-jogo";
           input.min = 1;
-          input.max = 60;
+          input.max = 25;
 
-          if (top5.has(num)) {
-            input.style.backgroundColor = "#ff4500";
+                   if (top5.has(num)) {
+            input.style.backgroundColor = "#ff4500"; // vermelho forte
             input.style.color = "#fff";
             input.style.boxShadow = "0 0 6px #ff0000";
           } else if (top10.has(num)) {
-            input.style.backgroundColor = "#ffa500";
+            input.style.backgroundColor = "#ffa500"; // laranja
             input.style.color = "#000";
             input.style.boxShadow = "0 0 6px #ffae42";
           } else {
-            input.style.backgroundColor = "#303030";
-            input.style.color = "#ffffff";
+            input.style.backgroundColor = "#303030"; // cinza padrão
+            input.style.color = "#ffd700"; // amarelo para destacar dezenas sorteadas
             input.style.boxShadow = "0 0 4px #00ffd5";
           }
 
@@ -906,6 +887,22 @@ async function sortearComFrequencia() {
       });
     }
 
+    // 🔹 Legenda fixa explicando as cores
+    const legenda = document.createElement("div");
+    legenda.style.marginTop = "20px";
+    legenda.style.color = "#ffffff";
+    legenda.style.fontWeight = "bold";
+    legenda.style.fontSize = "14px";
+    legenda.style.textAlign = "center";
+
+    legenda.innerHTML = `
+      <p>🔴 Vermelho = Top 5 mais sorteados (altíssima frequência)</p>
+      <p>🟧 Laranja = 6º ao 15º mais sorteados (frequência alta)</p>
+      <p>🔶 Amarelo = Dezenas sorteadas no jogo atual (destaque visual)</p>
+      <p>⚪ Cinza = Dezenas fora do ranking principal (equilíbrio)</p>
+    `;
+    container.appendChild(legenda);
+
     if (status) {
       status.innerText = "✅ Jogos peneirados: todos os slots foram preenchidos com jogos válidos!";
       status.style.color = "#00ffd5";
@@ -919,12 +916,110 @@ async function sortearComFrequencia() {
     console.error("❌ Erro na análise histórica:", erro);
     if (status) {
       status.innerText = `❌ Falha na análise histórica: ${erro.message}`;
-      status.style.color = "#ff6347";
+      status.style.color = "#ff6347"; // vermelho tomate
     }
   }
 }
 
 
+
+	 
+	 
+	 
+// Função auxiliar para gerar combinações únicas de k elementos
+function gerarCombinacoes(array, k) {
+  const resultados = [];
+
+  function backtrack(inicio, atual) {
+    if (atual.length === k) {
+      resultados.push([...atual]);
+      return;
+    }
+    for (let i = inicio; i < array.length; i++) {
+      atual.push(array[i]);
+      backtrack(i + 1, atual);
+      atual.pop();
+    }
+  }
+
+  backtrack(0, []);
+  return resultados;
+}
+
+// Função principal: lê de 15 a 20 números dos inputs e monta os jogos de 15 dezenas
+function montarJogosLotofacil() {
+  const inputsTopo = document.querySelectorAll("#entradaTopo input");
+  const numerosEscolhidos = [];
+
+  // Lê os valores dos inputs
+  inputsTopo.forEach(input => {
+    const val = parseInt(input.value, 10);
+    if (!isNaN(val) && val >= 1 && val <= 25) {
+      numerosEscolhidos.push(val);
+    }
+  });
+
+  // Verifica se foram digitados entre 15 e 20 números válidos
+  if (numerosEscolhidos.length < 15 || numerosEscolhidos.length > 20) {
+    alert("Você deve inserir entre 15 e 20 números válidos (entre 1 e 25).");
+    return;
+  }
+
+  // Ordena os números para consistência
+  const ordenados = [...numerosEscolhidos].sort((a, b) => a - b);
+
+  // Gera todas as combinações possíveis de 15 dezenas dentro dos escolhidos
+  let jogos = gerarCombinacoes(ordenados, 15);
+
+  // Remove duplicados (garantia extra)
+  const vistos = new Set();
+  jogos = jogos.filter(jogo => {
+    const chave = jogo.join("-");
+    if (vistos.has(chave)) return false;
+    vistos.add(chave);
+    return true;
+  });
+
+  // Exibe os jogos dinamicamente na página
+  const container = document.getElementById("jogosGerados");
+  container.innerHTML = "";
+
+  const titulo = document.createElement("div");
+  titulo.textContent = `📊 Foram gerados ${jogos.length} jogos de 15 dezenas a partir dos ${ordenados.length} escolhidos:`;
+  titulo.style.fontWeight = "bold";
+  titulo.style.color = "#00ffd5";
+  titulo.style.marginBottom = "12px";
+  container.appendChild(titulo);
+
+  jogos.forEach((jogo, idx) => {
+    const grupo = document.createElement("div");
+    grupo.className = "grupo-jogo";
+    grupo.style.marginBottom = "12px";
+
+    // Exibe o jogo já formatado com hífen (para copiar/colar)
+    const tituloJogo = document.createElement("div");
+    tituloJogo.textContent = `Jogo ${idx + 1}: ${jogo.map(n => String(n).padStart(2, '0')).join("-")}`;
+    tituloJogo.style.fontWeight = "bold";
+    tituloJogo.style.color = "#ffcc00";
+    tituloJogo.style.marginBottom = "6px";
+    grupo.appendChild(tituloJogo);
+
+    container.appendChild(grupo);
+  });
+
+  // Mensagem final
+  const finalMsg = document.createElement("div");
+  finalMsg.textContent = "🟢 Jogos 100% Inéditos";
+  finalMsg.style.color = "#00ff00";
+  finalMsg.style.fontWeight = "bold";
+  finalMsg.style.marginTop = "20px";
+  container.appendChild(finalMsg);
+}
+
+	
+
+
+// Usa somente o JSON local servido pelo Apache/XAMPP
 async function jogosInversosALogica() {
   try {
     const qtd = parseInt(prompt("Quantos jogos deseja gerar? (1 a 100)", ""));
@@ -934,6 +1029,10 @@ async function jogosInversosALogica() {
     }
 
     const container = document.getElementById("jogosInversosContainer");
+    if (!container) {
+      alert("❌ Container jogosInversosContainer não encontrado.");
+      return;
+    }
     container.innerHTML = "";
     Object.assign(container.style, {
       display: "flex",
@@ -941,41 +1040,83 @@ async function jogosInversosALogica() {
       alignItems: "center"
     });
 
-    const res = await fetch("MegaSena1.json");
-    const dados = await res.json();
+    // Caminho local do JSON (ajuste se necessário)
+    const urlLocal = "/SorteioApp/lotofacil_combinacoes_convertido.json";
 
-    const jogosSalvos = Object.values(dados).map(jogo => {
-      const dezenas = Array.isArray(jogo)
+    // Faz o fetch e valida a resposta como texto antes de parsear
+    const res = await fetch(urlLocal, { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} ao carregar ${urlLocal}`);
+    }
+    const texto = await res.text();
+
+    let dados;
+    try {
+      dados = JSON.parse(texto);
+    } catch (e) {
+      console.error("Resposta não era JSON. Cabeçalho da resposta:", texto.slice(0, 300));
+      throw new Error("Formato inválido do JSON local");
+    }
+
+    if (!dados || (typeof dados !== "object")) {
+      throw new Error("JSON local vazio ou formato não reconhecido");
+    }
+
+    // Normalizador universal: aceita array direto, objeto com dezenas, strings, decimais
+    function normalizarJogo(jogo) {
+      const dezenasBrutas = Array.isArray(jogo)
         ? jogo
-        : Array.isArray(jogo.dezenas)
+        : Array.isArray(jogo?.dezenas)
           ? jogo.dezenas
-          : [];
-      return dezenas.slice().sort((a, b) => a - b).join(",");
-    });
+          : null;
 
-    // 🔁 contagem de frequência (1–60)
+      if (!Array.isArray(dezenasBrutas)) return [];
+
+      const nums = dezenasBrutas
+        .map(v => {
+          if (v === null || v === undefined) return null;
+          const str = String(v).trim().replace(",", ".");
+          const num = Math.round(parseFloat(str));
+          if (!Number.isFinite(num)) return null;
+          return (num >= 1 && num <= 25) ? num : null;
+        })
+        .filter(n => n !== null);
+
+      // remove duplicados e ordena
+      return Array.from(new Set(nums)).sort((a, b) => a - b);
+    }
+
+    // Converte objeto de concursos em lista de jogos normalizados
+    const jogosNormalizados = Object.values(dados)
+      .map(normalizarJogo)
+      .filter(arr => arr.length >= 1); // mantém jogos com alguma dezena válida
+
+    if (!jogosNormalizados.length) {
+      throw new Error("Nenhum jogo válido encontrado no JSON local");
+    }
+
+    // Monta índice de jogos salvos como string ordenada (para checagem de ineditismo)
+    const jogosSalvos = jogosNormalizados
+      .filter(arr => arr.length === 15)
+      .map(arr => arr.join(","));
+
+    // Contagem de frequência
     const contagem = {};
-    for (let i = 1; i <= 60; i++) contagem[i] = 0;
-
-    Object.values(dados).forEach(jogo => {
-      const dezenas = Array.isArray(jogo)
-        ? jogo
-        : Array.isArray(jogo.dezenas)
-          ? jogo.dezenas
-          : [];
-      dezenas.forEach(num => contagem[num]++);
+    for (let i = 1; i <= 25; i++) contagem[i] = 0;
+    jogosNormalizados.forEach(dezenas => {
+      dezenas.forEach(num => { contagem[num] = (contagem[num] || 0) + 1; });
     });
 
     const topFrequentes = Object.entries(contagem)
       .sort((a, b) => b[1] - a[1])
-      .map(([num]) => parseInt(num));
+      .map(([num]) => parseInt(num, 10));
 
     const top5 = topFrequentes.slice(0, 5);
     const top10 = topFrequentes.slice(5, 10);
 
-    const criarSpan = (dezena) => {
+    const criarSpan = dezena => {
       const span = document.createElement("span");
-      span.textContent = String(dezena).padStart(2, '0');
+      span.textContent = String(dezena).padStart(2, "0");
       Object.assign(span.style, {
         fontWeight: "bold",
         textAlign: "center",
@@ -990,13 +1131,14 @@ async function jogosInversosALogica() {
         backgroundColor: top5.includes(dezena)
           ? "#ff4d4d"
           : top10.includes(dezena)
-            ? "#ffa500"
-            : "#333",
+          ? "#ffa500"
+          : "#333",
         color: "#fff"
       });
       return span;
     };
 
+    // Geração dos jogos "inversos à lógica"
     for (let j = 0; j < qtd; j++) {
       const titulo = document.createElement("div");
       titulo.textContent = `🎯 Jogo ${j + 1}:`;
@@ -1010,15 +1152,28 @@ async function jogosInversosALogica() {
 
       const jogo = [];
 
-      // 🔁 lógica inversa: escolhe dezenas menos frequentes
-      const menosFrequentes = topFrequentes.slice(20); // pega do 21º em diante
-      while (jogo.length < 6) {
-        const idx = Math.floor(Math.random() * menosFrequentes.length);
-        const n = menosFrequentes[idx];
-        if (!jogo.includes(n)) jogo.push(n);
+      // bloco sequência de 5
+      const inicio = Math.floor(Math.random() * 16) + 1;
+      for (let i = 0; i < 5; i++) {
+        const n = inicio + i;
+        if (n <= 25 && !jogo.includes(n)) jogo.push(n);
       }
 
-      const final = jogo.slice(0, 6).sort((a, b) => a - b);
+      // extremos
+      [1, 25].forEach(n => { if (!jogo.includes(n)) jogo.push(n); });
+
+      // ímpares até ter 13
+      let candidato = 1;
+      while (jogo.length < 13) {
+        if (candidato % 2 !== 0 && !jogo.includes(candidato)) jogo.push(candidato);
+        candidato++;
+      }
+
+      // raras
+      const raras = [11, 18, 22, 13, 2];
+      raras.forEach(r => { if (jogo.length < 15 && !jogo.includes(r)) jogo.push(r); });
+
+      const final = jogo.slice(0, 15).sort((a, b) => a - b);
       const jogoString = final.join(",");
       const existeNoJson = jogosSalvos.includes(jogoString);
 
@@ -1055,27 +1210,11 @@ async function jogosInversosALogica() {
 
     atualizarStatus(`✅ ${qtd} jogo(s) gerado(s) com destaque por frequência!`, "#00ffd5");
   } catch (error) {
-    console.error("Erro ao carregar ou processar o JSON:", error);
-    alert("❌ Falha ao gerar os jogos. Verifique o caminho do JSON ou o formato dos dados.");
+    console.error("Erro ao carregar ou processar os dados:", error);
+    alert("❌ Falha ao gerar os jogos. Verifique o caminho do JSON local ou o formato dos dados.");
   }
 }
 
-// ✅ Preenche os inputs fixos com um array de 15 números, mantendo a ordem original
-function preencherInputs(numeros) {
-  const inputs = document.querySelectorAll("#entradaTopo input");
-
-  // Garante que o array seja válido e preserve a ordem
-  const conjuntoCorrigido = Array.isArray(numeros) ? numeros.slice(0, 15) : [];
-
-  // Preenche os inputs na ordem exata recebida
-  for (let i = 0; i < inputs.length; i++) {
-    const valor = conjuntoCorrigido[i];
-    inputs[i].value = Number.isInteger(valor) && valor >= 1 && valor <= 25 ? valor : "";
-  }
-
-  // Atualiza o topo visual com os números originais
-  atualizarTopo(conjuntoCorrigido);
-}
 function gerarJogoPromissor(historicoConcursos) {
   const frequencia = {};
   const triosRepetidos = new Set();
@@ -1148,77 +1287,95 @@ function gerarJogoPromissor(historicoConcursos) {
   return jogo.slice(0, 15).sort((a, b) => a - b);
 }
 
-// ✅ Busca os trios mais comuns via PHP
 async function verTriosMaisComuns() {
-  const resultado = document.getElementById("resultadoBitcoin");
+  const resultado = document.getElementById("areaResultados");
   if (!resultado) return;
 
-  atualizarStatus("🔍 Lendo JSON e calculando trios mais comuns da Mega-Sena...", "#4682b4");
+  // 🔹 Pergunta ao usuário qual tamanho de combinação deseja
+  let tamanho = parseInt(prompt("Digite o tamanho da combinação:\n2 = Duplas\n3 = Trios\n4 = Quadras\n5 = Quinas"));
+  if (![2,3,4,5].includes(tamanho)) {
+    atualizarStatus("⚠️ Valor inválido. Digite 2, 3, 4 ou 5.", "#ff6347");
+    return;
+  }
+
+  atualizarStatus(`🔍 Calculando combinações de ${tamanho} números mais comuns...`, "#4682b4");
+  resultado.innerHTML = "";
 
   try {
-    // Lê o JSON gerado pelo Python
-    const res = await fetch("MegaSena1.json");
-    if (!res.ok) throw new Error(`Erro HTTP ${res.status}`);
+    // Carrega o JSON completo
+    const res = await fetch("/SorteioApp/lotofacil_combinacoes_convertido.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status} ao carregar JSON`);
+    const data = await res.json();
 
-    const concursos = await res.json();
+    // 🔹 Extrai apenas concursos (chaves numéricas)
+    const concursos = Object.keys(data)
+      .filter(k => !isNaN(parseInt(k)))
+      .map(k => data[k]);
 
-    // Mapear todos os trios
-    const contadorTrios = {};
+    // 🔹 Conta combinações
+    const contador = new Map();
 
-    Object.values(concursos).forEach(dezenas => {
-      if (Array.isArray(dezenas) && dezenas.length === 6) {
-        // Gera todas combinações de 3 dezenas dentro das 6
-        for (let i = 0; i < dezenas.length - 2; i++) {
-          for (let j = i + 1; j < dezenas.length - 1; j++) {
-            for (let k = j + 1; k < dezenas.length; k++) {
-              const trio = [dezenas[i], dezenas[j], dezenas[k]].sort((a, b) => a - b);
-              const chave = trio.join("-");
-              contadorTrios[chave] = (contadorTrios[chave] || 0) + 1;
-            }
-          }
-        }
-      }
+    concursos.forEach(dezenas => {
+      gerarCombinacoes(dezenas, tamanho).forEach(comb => {
+        const chave = comb.sort((a, b) => a - b).join("-");
+        contador.set(chave, (contador.get(chave) || 0) + 1);
+      });
     });
 
-    // Ordena por frequência
-    const triosOrdenados = Object.entries(contadorTrios)
-      .map(([trio, ocorrencias]) => ({
-        trio: trio.split("-").map(Number),
-        ocorrencias,
-        porcentagem: ((ocorrencias / Object.keys(concursos).length) * 100).toFixed(2)
-      }))
-      .sort((a, b) => b.ocorrencias - a.ocorrencias);
+    // 🔹 Ordena por frequência
+    const combinacoesOrdenadas = [...contador.entries()]
+      .map(([comb, ocorrencias]) => ({ comb: comb.split("-"), ocorrencias }))
+      .sort((a, b) => b.ocorrencias - a.ocorrencias)
+      .slice(0, 30);
 
-    if (triosOrdenados.length === 0) {
-      atualizarStatus("⚠️ Nenhum trio encontrado.", "#ff9900");
-      resultado.innerHTML = `<p style="color: orange;">⚠️ Nenhum trio encontrado.</p>`;
-      return;
-    }
-
-    // Monta resultado
-    let html = `<strong>📊 Trios mais comuns da Mega-Sena:</strong><br><ul style="list-style:none; padding-left:0;">`;
-
-    triosOrdenados.slice(0, 30).forEach((item, index) => {
-      const trioStr = item.trio.join(" - ");
-      html += `<li>🔢 <strong>${trioStr}</strong> — ${item.ocorrencias}x (${item.porcentagem}%)</li>`;
-      if ((index + 1) % 3 === 0) html += `<hr>`;
+    // 🔹 Renderiza resultado
+    let html = `<strong>📊 Top ${tamanho}-pletos mais comuns (${concursos.length} concursos analisados):</strong><br><ul style="list-style:none; padding-left:0;">`;
+    combinacoesOrdenadas.forEach((item, idx) => {
+      html += `<li>🔢 <strong>${item.comb.join(" - ")}</strong> — ${item.ocorrencias}x</li>`;
+      if ((idx + 1) % 3 === 0) html += `<hr>`;
     });
-
     html += `</ul>`;
     resultado.innerHTML = html;
-    atualizarStatus("✅ Trios mais comuns da Mega-Sena calculados!", "#00ffd5");
 
+    atualizarStatus(`✅ ${tamanho}-pletos calculados com sucesso!`, "#00ffd5");
   } catch (err) {
-    console.error("Erro ao processar JSON:", err);
+    console.error("❌ Erro ao calcular combinações:", err);
     atualizarStatus("❌ Falha ao processar JSON.", "#ff6347");
-    resultado.innerHTML = `
-      <p style="color: red;">⚠️ Não foi possível calcular os trios. Verifique o arquivo JSON.</p>
-    `;
+    resultado.innerHTML = `<p style="color: red;">⚠️ Não foi possível calcular.</p>`;
   }
 }
- function limparTudo() {
-  // 🔄 Limpa todos os inputs numéricos da página
+
+// 🔹 Função auxiliar para gerar combinações de tamanho N
+function gerarCombinacoes(array, tamanho) {
+  const resultado = [];
+  function backtrack(inicio, atual) {
+    if (atual.length === tamanho) {
+      resultado.push([...atual]);
+      return;
+    }
+    for (let i = inicio; i < array.length; i++) {
+      atual.push(array[i]);
+      backtrack(i + 1, atual);
+      atual.pop();
+    }
+  }
+  backtrack(0, []);
+  return resultado;
+}
+
+function atualizarStatus(msg, cor) {
+  const status = document.getElementById("statusAtualizacao");
+  if (status) {
+    status.textContent = msg;
+    status.style.color = cor;
+    status.style.fontWeight = "bold";
+  }
+}
+
+
+function limparTudo() {
   document.getElementById("infoConcurso").textContent = "";
+
   const inputsNumericos = document.querySelectorAll('input[type="number"]');
   inputsNumericos.forEach(input => {
     input.value = "";
@@ -1229,7 +1386,6 @@ async function verTriosMaisComuns() {
     input.classList.remove("highlight", "error");
   });
 
-  // 🔄 Limpa todos os inputs de texto dentro da div #entrada
   const inputsTexto = document.querySelectorAll('#entrada input[type="text"]');
   inputsTexto.forEach(input => {
     input.value = "";
@@ -1240,81 +1396,73 @@ async function verTriosMaisComuns() {
     input.classList.remove("highlight", "error");
   });
 
-  // 🧹 Limpa etiquetas de números digitados
+  // ✅ Agora também limpa os inputs fixos do topo
+  const inputsTopo = document.querySelectorAll('#entradaTopo input');
+  inputsTopo.forEach(input => {
+    input.value = "";
+    input.style.backgroundColor = "";
+    input.style.color = "";
+    input.style.fontWeight = "";
+    input.style.fontFamily = "";
+  });
+
   const labelsTopo = document.getElementById("labelsTopo");
   if (labelsTopo) labelsTopo.innerHTML = "";
 
-  // 🧹 Limpa resultado final
   const resultado = document.getElementById("resultado");
   if (resultado) resultado.innerHTML = "";
 
-  // 🧹 Limpa campo de saída
   const output = document.getElementById("output");
   if (output) output.textContent = "";
 
-  // 🧹 Limpa status
   atualizarStatus("🧹 Interface limpa com sucesso!", "#00ffd5");
 
-  // 🧹 Limpa painel de Bitcoin (se existir)
   const resultadoBitcoin = document.getElementById("resultadoBitcoin");
   if (resultadoBitcoin) resultadoBitcoin.innerHTML = "";
 
-  // 🧹 Limpa painel do último concurso
   const topo = document.getElementById("ultimoConcursoTopo");
   if (topo) topo.innerHTML = "";
 
-  // 🧹 Limpa variáveis globais
   window.jogoFixo = [];
   window.maisFrequentes = [];
   window.previstosEconometricamente = [];
 
-  // 🧹 Limpa jogos gerados
   const container = document.getElementById("jogosGerados");
   if (container) container.innerHTML = "";
 
-  // 🧹 Limpa análise estatística
   const analise = document.getElementById("analiseEstatistica");
   if (analise) analise.innerHTML = "";
 
-  // 🧹 Limpa lista de concursos
   const lista = document.getElementById("listaConcursos");
   if (lista) lista.innerHTML = "";
 
-  // 🧹 Limpa barra de progresso
   const barra = document.getElementById("barraProgresso");
   if (barra) {
     barra.style.transition = "width 0.3s ease";
     barra.style.width = "0%";
   }
 
-  // 🧹 Limpa qualquer outro painel de concursos (se existir)
   const painelConcursos = document.getElementById("painelConcursos");
   if (painelConcursos) painelConcursos.innerHTML = "";
 
-  // 🧹 Limpa histórico de concursos (se armazenado localmente)
   localStorage.removeItem("ultimosConcursos");
 
-  // 🧹 Limpa tabela de concursos (se existir)
   const tabela = document.querySelector("#tabelaConcursos tbody");
   if (tabela) tabela.innerHTML = "";
 
-  // 🧹 Limpa alertas ou mensagens extras
   const alertas = document.getElementById("alertas");
   if (alertas) alertas.innerHTML = "";
 
-  // 🧹 Limpa os jogos inversos à lógica
   const jogosInversos = document.getElementById("jogosInversosContainer");
   if (jogosInversos) jogosInversos.innerHTML = "";
-}
- 
- 
- 
- function atualizarStatus(msg, cor = "#333") {
-  const status = document.getElementById("statusMsg");
-  if (status) {
-    status.textContent = msg;
-    status.style.color = cor;
-  }
+
+  // ✅ Agora também limpa os resultados extras do promissor
+  const extras = document.getElementById("resultadoExtras");
+  if (extras) extras.innerHTML = "";
+
+  // ✅ Agora também limpa os resultados da função de trios/combinacoes
+  const areaResultados = document.getElementById("areaResultados");
+  if (areaResultados) areaResultados.innerHTML = "";
 }
 
 function atualizarTopo(dezenas) {
@@ -1336,31 +1484,31 @@ function atualizarTopo(dezenas) {
  
  
  
-function avaliarConjuntoPython() {
+ function avaliarConjuntoPython() {
   const inputs = document.querySelectorAll('#entradaTopo input');
   const numeros = [];
 
-  // Captura e valida os números (1 a 60)
+  // Captura e valida os números
   inputs.forEach(input => {
     let valor = parseInt(input.value);
     if (isNaN(valor)) {
       const limpo = input.value.replace(/\D/g, '');
       valor = parseInt(limpo);
     }
-    numeros.push(Number.isInteger(valor) && valor >= 1 && valor <= 60 ? valor : null);
+    numeros.push(Number.isInteger(valor) && valor >= 1 && valor <= 25 ? valor : null);
   });
 
   const conjuntoCorrigido = numeros.filter(n => n !== null);
 
-  // Verifica se tem 6 números válidos
-  if (conjuntoCorrigido.length !== 6) {
-    atualizarStatus(`⚠️ Conjunto inválido: ${conjuntoCorrigido.length}/6 números válidos.`, "#ff9900");
+  // Verifica se tem 15 números válidos
+  if (conjuntoCorrigido.length !== 15) {
+    atualizarStatus(`⚠️ Conjunto inválido: ${conjuntoCorrigido.length}/15 números válidos.`, "#ff9900");
     return;
   }
 
   // Verifica duplicados
   const conjuntoUnico = [...new Set(conjuntoCorrigido)];
-  if (conjuntoUnico.length !== 6) {
+  if (conjuntoUnico.length !== 15) {
     atualizarStatus("⚠️ Conjunto inválido: números repetidos detectados.", "#ff9900");
     return;
   }
@@ -1370,41 +1518,131 @@ function avaliarConjuntoPython() {
   // Estatísticas
   const soma_total = conjuntoUnico.reduce((a, b) => a + b, 0);
   const pares = conjuntoUnico.filter(n => n % 2 === 0).length;
-  const impares = 6 - pares;
+  const impares = 15 - pares;
 
-  // Distribuição por linhas e colunas (Mega-Sena: 10 linhas × 6 colunas)
-  const distribuicao = { linhas: {}, colunas: {} };
-  for (let i = 1; i <= 10; i++) distribuicao.linhas[i] = 0;
-  for (let j = 1; j <= 6; j++) distribuicao.colunas[j] = 0;
-
+  // Distribuição por linhas e colunas
+  const distribuicao = {
+    linhas: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+    colunas: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
+  };
   conjuntoUnico.forEach(n => {
-    const linha = Math.floor((n - 1) / 6) + 1;
-    const coluna = ((n - 1) % 6) + 1;
+    const linha = Math.floor((n - 1) / 5) + 1;
+    const coluna = ((n - 1) % 5) + 1;
     distribuicao.linhas[linha]++;
     distribuicao.colunas[coluna]++;
   });
 
-  // Detecta sequências consecutivas
+  // Detecta trios consecutivos
   const sequencias_comuns = [];
   const ordenado = [...conjuntoUnico].sort((a, b) => a - b);
-  for (let i = 0; i < ordenado.length - 1; i++) {
-    if (ordenado[i + 1] === ordenado[i] + 1) {
-      sequencias_comuns.push([ordenado[i], ordenado[i + 1]]);
+  for (let i = 0; i < ordenado.length - 2; i++) {
+    if (ordenado[i + 1] === ordenado[i] + 1 && ordenado[i + 2] === ordenado[i] + 2) {
+      sequencias_comuns.push([ordenado[i], ordenado[i + 1], ordenado[i + 2]]);
     }
   }
 
-  // Monta resultado (mantém layout neon)
+  // Funções auxiliares para gerar variações
+  function variarVizinho(base) {
+  let jogo = base.map(n => {
+    if (Math.random() < 0.4) {
+      let novo = n + (Math.random() < 0.5 ? -1 : 1);
+      if (novo < 1) novo = 1;
+      if (novo > 25) novo = 25;
+      return novo;
+    }
+    return n;
+  });
+
+  // Remove duplicados
+  jogo = [...new Set(jogo)];
+
+  // Completa até 15 números únicos
+  while (jogo.length < 15) {
+    let novo = Math.floor(Math.random() * 25) + 1;
+    if (!jogo.includes(novo)) jogo.push(novo);
+  }
+
+  return jogo.sort((a, b) => a - b);
+}
+
+function preservarSequencias(base) {
+  let jogo = [...base];
+  sequencias_comuns.forEach(seq => {
+    seq.forEach(n => {
+      if (!jogo.includes(n)) jogo.push(n);
+    });
+  });
+
+  // Substitui alguns números fora das sequências
+  for (let i = 0; i < 3; i++) {
+    const idx = Math.floor(Math.random() * jogo.length);
+    let novo = Math.floor(Math.random() * 25) + 1;
+    if (!jogo.includes(novo)) jogo[idx] = novo;
+  }
+
+  // Remove duplicados e completa
+  jogo = [...new Set(jogo)];
+  while (jogo.length < 15) {
+    let novo = Math.floor(Math.random() * 25) + 1;
+    if (!jogo.includes(novo)) jogo.push(novo);
+  }
+
+  return jogo.sort((a, b) => a - b);
+}
+
+function equilibrarDistribuicao(base) {
+  let jogo = [...base];
+  const paresAtual = jogo.filter(n => n % 2 === 0).length;
+
+  if (paresAtual < 7) {
+    for (let i = 0; i < 2; i++) {
+      const idx = jogo.findIndex(n => n % 2 !== 0);
+      if (idx !== -1) jogo[idx] = 2 + Math.floor(Math.random() * 12) * 2;
+    }
+  } else if (paresAtual > 9) {
+    for (let i = 0; i < 2; i++) {
+      const idx = jogo.findIndex(n => n % 2 === 0);
+      if (idx !== -1) jogo[idx] = 1 + Math.floor(Math.random() * 12) * 2;
+    }
+  }
+
+  // Remove duplicados e completa
+  jogo = [...new Set(jogo)];
+  while (jogo.length < 15) {
+    let novo = Math.floor(Math.random() * 25) + 1;
+    if (!jogo.includes(novo)) jogo.push(novo);
+  }
+
+  return jogo.sort((a, b) => a - b);
+}
+
+
+
+
+  // Gera até 9 jogos sugestivos
+  const sugestoes = [];
+  for (let i = 0; i < 3; i++) {
+    sugestoes.push(variarVizinho(conjuntoUnico).sort((a, b) => a - b));
+  }
+  for (let i = 0; i < 3; i++) {
+    sugestoes.push(preservarSequencias(conjuntoUnico).sort((a, b) => a - b));
+  }
+  for (let i = 0; i < 3; i++) {
+    sugestoes.push(equilibrarDistribuicao(conjuntoUnico).sort((a, b) => a - b));
+  }
+
+  // Monta resultado
   const resultado = document.getElementById("resultadoBitcoin");
   let html = `
-    <strong>📊 Avaliação Mega-Sena:</strong><br>
+    <strong>📊 Avaliação JavaScript:</strong><br>
     <ul style="list-style:none; padding-left:0;">
       <li>🧮 Soma total: <strong>${soma_total}</strong></li>
       <li>⚖️ Pares: <strong>${pares}</strong> | Ímpares: <strong>${impares}</strong></li>
-      <li>🔍 Sequências consecutivas detectadas: <strong>${sequencias_comuns.length}</strong></li>
+      <li>🔍 Trios comuns detectados: <strong>${sequencias_comuns.length}</strong></li>
   `;
 
   if (sequencias_comuns.length) {
-    html += `<li>🔗 Sequências encontradas: <strong>${sequencias_comuns.map(t => t.join("-")).join(", ")}</strong></li>`;
+    html += `<li>🔗 Trios encontrados: <strong>${sequencias_comuns.map(t => t.join("-")).join(", ")}</strong></li>`;
   }
 
   html += `</ul>`;
@@ -1413,9 +1651,33 @@ function avaliarConjuntoPython() {
   const colunas = Object.entries(distribuicao.colunas).map(([c, q]) => `C${c}: ${q}`).join(" | ");
   html += `<p>🧩 Distribuição:<br><strong>${linhas}</strong><br><strong>${colunas}</strong></p>`;
 
+  // Exibe sugestões de jogos com estilo neon
+  if (sugestoes.length) {
+    html += `<p style="margin-top:20px; color:#ffcc00; font-weight:bold;">🎰 Sugestões de jogos:</p><ul style="list-style:none; padding-left:0;">`;
+    sugestoes.forEach((jogo, i) => {
+      html += `
+        <li style="
+          margin-top:20px;
+          font-size:18px;
+          font-family:'Orbitron', sans-serif;
+          color:#ffffff;
+          text-shadow:0 0 8px #00ffd5, 0 0 12px #00ffd5;
+        ">
+          <strong style="color:#ff00ff; text-shadow:0 0 6px #ff00ff;">Jogo ${i + 1}:</strong><br>
+          <span style="color:#00ffd5; font-weight:bold; text-shadow:0 0 10px #00ffd5;">
+            ${jogo.join(" ... ")}
+          </span>
+        </li>
+      `;
+    });
+    html += `</ul>`;
+  }
+
   resultado.innerHTML = html;
   atualizarStatus("✅ Avaliação concluída com sucesso!", "#00ffd5");
 }
+
+
 
   // ✅ Limpa toda a interface visual e dados
   function limparInterfaceCompleta() {
@@ -1444,12 +1706,24 @@ function avaliarConjuntoPython() {
     atualizarStatus("🧹 Interface limpa com sucesso!", "#00ffd5");
   }
   
+  // 🧹 Limpa somente os jogos promissores extras (não altera os inputs do topo)
+function limparJogosPromissores() {
+  const resultadoExtras = document.getElementById("resultadoExtras");
+  if (resultadoExtras) {
+    resultadoExtras.innerHTML = ""; // apaga apenas os cards gerados dinamicamente
+  }
+
+  // Mantém os inputs fixos do topo intactos
+  // Não mexe em window.jogoFixo nem nos valores já preenchidos
+
+  if (typeof atualizarStatus === "function") {
+    atualizarStatus("🧹 Jogos promissores apagados com sucesso!", "#00ffd5");
+  }
+}  
   
   
   
-  
-  
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const botao = document.getElementById("btnSortear");
   if (botao) {
     botao.addEventListener("click", sortearComLogica);
@@ -1457,56 +1731,48 @@ function avaliarConjuntoPython() {
 });
 
 async function sortearComLogica() {
-  atualizarStatus("⏳ Aguarde: Sorteando do concurso 1 até hoje...", "#ff00ff");
+  atualizarStatus("⏳ Aguarde: Analisando todos os concursos e gerando sugestões equilibradas...", "#ff00ff");
 
   try {
-    const res = await fetch("MegaSena1.json");
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    // 🔹 Lê o JSON local
+    const url = `${window.location.origin}/SorteioApp/lotofacil_combinacoes_convertido.json`;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Erro HTTP ${res.status} ao ler ${url}`);
     const dados = await res.json();
 
-    // Último concurso
-    const chaves = Object.keys(dados).sort((a, b) => Number(a) - Number(b));
-    const ultimaChave = chaves[chaves.length - 1];
-    const concursoReferencia = Array.isArray(dados[ultimaChave])
-      ? dados[ultimaChave]
-      : Array.isArray(dados[ultimaChave]?.dezenas)
-        ? dados[ultimaChave].dezenas
-        : [];
-
-    const infoConcurso = document.getElementById("infoConcurso");
-    if (infoConcurso) {
-      infoConcurso.textContent = `Último concurso: ${ultimaChave}`;
+    // Normalização
+    function normalizarDezenas(valor) {
+      if (Array.isArray(valor)) return valor;
+      if (Array.isArray(valor?.dezenas)) return valor.dezenas;
+      if (typeof valor === "string") return valor.split(/[\s,;|.-]+/).map(Number);
+      if (typeof valor === "number") return [valor];
+      return [];
     }
 
     const jogosOrdenados = Object.entries(dados)
-      .map(([chave, jogo]) => {
-        const dezenas = Array.isArray(jogo)
-          ? jogo
-          : Array.isArray(jogo?.dezenas)
-            ? jogo.dezenas
-            : null;
-        return Array.isArray(dezenas) ? [chave, dezenas] : null;
-      })
-      .filter(Boolean)
-      .sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
+      .map(([chave, dezenas]) => [parseInt(chave), normalizarDezenas(dezenas)])
+      .filter(([_, dezenas]) => dezenas.length === 15)
+      .sort((a, b) => a[0] - b[0]);
 
     if (!jogosOrdenados.length) {
-      atualizarStatus("❌ Nenhum jogo encontrado no JSON local.", "#ff0000");
+      atualizarStatus("❌ Nenhum jogo encontrado no histórico.", "#ff0000");
       return;
     }
+
+    // Último concurso
+    const ultimoConcurso = jogosOrdenados[jogosOrdenados.length - 1];
+    const dezenasUltimoSet = new Set(ultimoConcurso[1]);
 
     const container = document.getElementById("jogosGerados");
     container.innerHTML = "";
 
     // Estatísticas
     const estatisticas = {};
-    for (let i = 1; i <= 60; i++) {
+    for (let i = 1; i <= 25; i++) {
       estatisticas[i] = { freq: 0, freqRecente: 0, atraso: 0 };
     }
 
     const totalJogos = jogosOrdenados.length;
-    const recentes = jogosOrdenados.slice(-50);
-
     jogosOrdenados.forEach(([_, jogo], index) => {
       jogo.forEach(num => {
         estatisticas[num].freq++;
@@ -1514,195 +1780,161 @@ async function sortearComLogica() {
       });
     });
 
-    recentes.forEach(([_, jogo]) => {
-      jogo.forEach(num => {
-        estatisticas[num].freqRecente++;
-      });
-    });
+    const qtdMostrar = parseInt(prompt("Quantos jogos deseja visualizar?")) || 30;
+    const intervaloRecente = parseInt(prompt("Quantos concursos recentes considerar para os números amarelos?")) || 50;
 
-    // Simulações
-    const simulados = [];
-    for (let s = 0; s < 1000; s++) {
-      const jogoSimulado = [];
-      let score = 0;
+    let recentes = intervaloRecente === 1 ? [ultimoConcurso] : jogosOrdenados.slice(-intervaloRecente);
+    recentes.forEach(([_, dezenas]) => dezenas.forEach(num => estatisticas[num].freqRecente++));
 
-      while (jogoSimulado.length < 6) {
-        const n = Math.floor(Math.random() * 60) + 1;
+    // Ranking geral
+    const ranking = Object.entries(estatisticas)
+      .sort((a, b) => b[1].freq - a[1].freq)
+      .map(([num]) => Number(num));
+    const top5 = new Set(ranking.slice(0, 5));
+    const top10 = new Set(ranking.slice(5, 15));
+
+    // Ranking dos mais frequentes nos últimos X concursos
+    const rankingRecentes = Object.entries(estatisticas)
+      .sort((a, b) => b[1].freqRecente - a[1].freqRecente)
+      .map(([num]) => Number(num));
+    const topRecentes = new Set(rankingRecentes.slice(0, 15)); // 🔹 agora top 15 ficam amarelos
+
+    // Função de score
+    function calcularScore(jogo) {
+      let score = 0, soma = 0, pares = 0, impares = 0;
+      const quadrantes = [0,0,0,0];
+      let seq = 1, seqMax = 1;
+      const ordenado = [...jogo].sort((a,b)=>a-b);
+
+      for (let i=0; i<ordenado.length; i++) {
+        const n = ordenado[i];
         const e = estatisticas[n];
-        const peso = e.freq * 1.2 + e.freqRecente * 2 - e.atraso * 0.5;
-        if (Math.random() < peso / 100 && !jogoSimulado.includes(n)) {
-          jogoSimulado.push(n);
-          score += peso;
-        }
+        soma += n;
+        if (n % 2 === 0) pares++; else impares++;
+        if (n <= 6) quadrantes[0]++; else if (n <= 12) quadrantes[1]++;
+        else if (n <= 18) quadrantes[2]++; else quadrantes[3]++;
+
+        if (i>0 && ordenado[i] === ordenado[i-1]+1) {
+          seq++;
+          seqMax = Math.max(seqMax, seq);
+        } else seq = 1;
+
+        score += (e.freq * 1.2) + (e.freqRecente * 2) - (e.atraso * 0.5);
       }
 
-      simulados.push({ jogo: jogoSimulado, score });
+      if (soma >= 185 && soma <= 205) score += 5; else score -= 3;
+      if (Math.abs(pares - impares) <= 2) score += 4; else score -= 2;
+      if (quadrantes.filter(q => q >= 2).length >= 3) score += 3; else score -= 2;
+      if (seqMax >= 4) score -= 4; else score += 2;
+
+      return score;
     }
 
-    const top9Simulados = simulados.sort((a, b) => b.score - a.score).slice(0, 9);
+    // Simulação
+    const simulados = [];
+    const maxFreq = Math.max(...Object.values(estatisticas).map(e => e.freq));
+    for (let s = 0; s < 2000; s++) {
+      const jogoSimulado = [];
+      while (jogoSimulado.length < 15) {
+        const universe = Array.from({ length: 25 }, (_, i) => i + 1);
+        const pesos = universe.map(n => {
+          let base = 1 + ((estatisticas[n].freq / maxFreq) * 3);
+          if (top5.has(n)) base *= 2.5;
+          else if (top10.has(n)) base *= 1.5;
+          return base;
+        });
+        const somaPesos = pesos.reduce((a, b) => a + b, 0);
+        let r = Math.random() * somaPesos;
+        let idx = 0;
+        for (; idx < pesos.length; idx++) {
+          r -= pesos[idx];
+          if (r <= 0) break;
+        }
+        const escolhido = universe[idx];
+        if (!jogoSimulado.includes(escolhido)) jogoSimulado.push(escolhido);
+      }
+      simulados.push({ jogo: jogoSimulado, score: calcularScore(jogoSimulado) });
+    }
 
-    top9Simulados.forEach((item, i) => {
+    const topSimulados = simulados.sort((a, b) => b.score - a.score).slice(0, qtdMostrar);
+
+    // Legenda
+    const legenda = document.createElement("div");
+    legenda.style.color = "#fff";
+    legenda.style.fontWeight = "bold";
+    legenda.style.textAlign = "center";
+    legenda.innerHTML = `
+      <p>🔴 Vermelho = Top 5 mais sorteados</p>
+      <p>🟧 Laranja = 6º ao 15º mais sorteados</p>
+      <p>🔶 Amarelo = Top 15 mais frequentes nos últimos ${intervaloRecente} concursos</p>
+      <p>⚪ Cinza = Dezenas fora do ranking principal</p>
+    `;
+    container.appendChild(legenda);
+
+    // Renderização
+    topSimulados.forEach((item, i) => {
       const grupo = document.createElement("div");
-      grupo.className = "grupo-jogo";
       grupo.style.marginBottom = "12px";
-
       const titulo = document.createElement("div");
-      titulo.textContent = `🔮 Simulado ${i + 1} — Score: ${item.score.toFixed(2)}`;
-      Object.assign(titulo.style, {
-        fontWeight: "bold",
-        marginBottom: "4px",
-        color: "#00ffcc",
-        textShadow: "0 0 6px #00ffd5"
-      });
+      titulo.textContent = `🔮 Sugestão ${i+1} — Score: ${item.score.toFixed(2)}`;
+      titulo.style.color = "#fff";
+      titulo.style.fontWeight = "bold";
       grupo.appendChild(titulo);
 
-      item.jogo.sort((a, b) => a - b).forEach(num => {
+      item.jogo.sort((a,b)=>a-b).forEach(num => {
         const span = document.createElement("span");
-        span.textContent = String(num).padStart(2, '0');
-        Object.assign(span.style, {
-          display: "inline-block",
-          width: "48px",
-          height: "48px",
-          lineHeight: "48px",
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: "18px",
-          borderRadius: "6px",
-          marginRight: "4px",
-          boxShadow: "0 0 4px #ffd700",
-          backgroundColor: concursoReferencia.includes(num) ? "#ffff66" : "#202020",
-          color: concursoReferencia.includes(num) ? "#000000" : "#ffffff"
-        });
+        span.textContent = String(num).padStart(2,'0');
+        span.style.display = "inline-block";
+        span.style.width = "48px";
+        span.style.height = "48px";
+        span.style.lineHeight = "48px";
+        span.style.textAlign = "center";
+        span.style.fontWeight = "bold";
+        span.style.fontSize = "18px";
+        span.style.borderRadius = "6px";
+        span.style.marginRight = "4px";
+
+        const ehUltimo = intervaloRecente === 1 && dezenasUltimoSet.has(num);
+        const ehRecente = intervaloRecente > 1 && topRecentes.has(num);
+
+                if (ehUltimo || ehRecente) {
+          span.style.backgroundColor = "#ffd700"; // amarelo
+          span.style.color = "#000";
+          span.style.boxShadow = "0 0 6px rgba(255,215,0,0.9)";
+        } else if (top5.has(num)) {
+          span.style.backgroundColor = "#ff4500"; // vermelho
+          span.style.color = "#fff";
+          span.style.boxShadow = "0 0 6px #ff0000";
+        } else if (top10.has(num)) {
+          span.style.backgroundColor = "#ffa500"; // laranja
+          span.style.color = "#000";
+          span.style.boxShadow = "0 0 6px #ffae42";
+        } else {
+          span.style.backgroundColor = "#202020"; // cinza
+          span.style.color = "#ccc";
+          span.style.boxShadow = "0 0 4px rgba(200,200,200,0.6)";
+        }
+
         grupo.appendChild(span);
       });
 
       container.appendChild(grupo);
     });
 
-    // Comparação com concursos anteriores
-    let melhorJogoChave = "";
-    let maiorAcerto = 0;
-    let totalAcima4 = 0;
-    const destaques = [];
-
-    jogosOrdenados.forEach(([chave, jogo]) => {
-      if (chave === ultimaChave) return;
-
-      let score = 0, soma = 0, acertos = 0;
-      let quadrantes = [0, 0, 0, 0];
-      let seq = 1, penalidadeSeq = 0;
-
-      const ordenado = [...jogo].sort((a, b) => a - b);
-      for (let i = 1; i < ordenado.length; i++) {
-        if (ordenado[i] === ordenado[i - 1] + 1) {
-          seq++;
-          if (seq >= 3) penalidadeSeq = 3;
-        } else {
-          seq = 1;
-        }
-      }
-
-      jogo.forEach(n => {
-        const e = estatisticas[n];
-        score += e.freq * 1.2 + e.freqRecente * 2 - e.atraso * 0.5;
-        soma += n;
-        if (n <= 15) quadrantes[0]++;
-        else if (n <= 30) quadrantes[1]++;
-        else if (n <= 45) quadrantes[2]++;
-        else quadrantes[3]++;
-        if (concursoReferencia.includes(n)) acertos++;
-      });
-
-      const penalidadeSoma = (soma < 100 || soma > 210) ? 3 : 0;
-      const penalidadeQuadrantes = quadrantes.filter(q => q === 0).length >= 2 ? 3 : 0;
-      const relevancia = score - penalidadeSeq - penalidadeSoma - penalidadeQuadrantes;
-
-      const grupo = document.createElement("div");
-      grupo.className = "grupo-jogo";
-      grupo.style.marginBottom = "12px";
-
-      const titulo = document.createElement("div");
-      titulo.textContent = `Jogo ${chave} — ${acertos} acertos — Relevância: ${relevancia.toFixed(2)}`;
-      Object.assign(titulo.style, {
-        fontWeight: "bold",
-        marginBottom: "4px",
-        color: acertos >= 4 ? "#ffeb3b" : "#ffffff",
-        textShadow: acertos >= 4 ? "0 0 6px #ffff66" : "none"
-      });
-      grupo.appendChild(titulo);
-
-      ordenado.forEach(num => {
-        const span = document.createElement("span");
-        span.textContent = String(num).padStart(2, '0');
-        Object.assign(span.style, {
-          display: "inline-block",
-          width: "48px",
-          height: "48px",
-          lineHeight: "48px",
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: "18px",
-          borderRadius: "6px",
-          marginRight: "4px",
-          boxShadow: "0 0 4px #00ffd5",
-          backgroundColor: concursoReferencia.includes(num) ? "#ffff66" : "#303030",
-          color: concursoReferencia.includes(num) ? "#000000" : "#ffffff"
-        });
-        grupo.appendChild(span);
-      });
-
-      if (acertos > maiorAcerto) {
-        maiorAcerto = acertos;
-        melhorJogoChave = chave;
-      }
-
-      if (chave !== ultimaChave && acertos >= 4) {
-        totalAcima4++;
-        destaques.push(grupo);
-      } else {
-        container.appendChild(grupo);
-      }
-    });
-
-       if (destaques.length > 0) {
-      const tituloDestaque = document.createElement("div");
-      tituloDestaque.textContent = `🌟 Esses concursos anteriores acertaram 4 ou mais dezenas do concurso ${ultimaChave}:`;
-      Object.assign(tituloDestaque.style, {
-        fontWeight: "bold",
-        color: "#ffeb3b",
-        marginBottom: "12px"
-      });
-      container.prepend(tituloDestaque);
-      destaques.reverse().forEach(grupo => container.prepend(grupo));
-    }
-
-    atualizarStatus(`🔍 Jogo ${melhorJogoChave} teve ${maiorAcerto} acertos com base no concurso ${ultimaChave}!`, "#00ff80");
-
-    const resumo = document.createElement("div");
-    resumo.textContent = `📊 ${totalAcima4} concursos anteriores tiveram 4 ou mais acertos em relação ao concurso ${ultimaChave}.`;
-    Object.assign(resumo.style, {
-      fontWeight: "bold",
-      color: "#00bfff",
-      marginTop: "16px"
-    });
-    container.appendChild(resumo);
+    atualizarStatus(
+      `✅ Foram gerados ${simulados.length} jogos simulados. Exibindo ${qtdMostrar} melhores sugestões.`,
+      "#00bfff"
+    );
 
   } catch (erro) {
-    console.error("❌ Erro ao acessar o arquivo JSON:", erro);
-    atualizarStatus("❌ Falha ao acessar MegaSena1.json. Verifique se o formato está correto.", "#ff6347");
+    console.error("❌ Erro ao acessar o histórico:", erro);
+    atualizarStatus("❌ Falha ao acessar os concursos. Verifique se o formato está correto.", "#ff6347");
   }
 }
 
-function atualizarStatus(texto, cor) {
-  const status = document.getElementById("statusImportacao");
-  if (status) {
-    status.innerText = texto;
-    status.style.color = cor;
-  }
-}
-		
-		
-		
+// 🔹 Expor no escopo global para funcionar com onclick no HTML
+window.sortearComLogica = sortearComLogica;
+	  
 </script>
 
    
@@ -1809,6 +2041,7 @@ function atualizarStatus(texto, cor) {
     atualizarStatus("⚠️ Função 'carregarCombinacoesReais' ainda não implementada.", "#ff9900");
   }
 
+// ✅ Função híbrida: Local + Netlify, blindada para aceitar vários formatos
 async function prepararPromissor() {
   if (window._promissorBusy) {
     atualizarStatus("⏳ Aguarde: geração em andamento.", "#ffcc00");
@@ -1816,46 +2049,77 @@ async function prepararPromissor() {
   }
   window._promissorBusy = true;
 
-  const triggerBtn = document.getElementById("btnPromissor");
-  if (triggerBtn) {
-    triggerBtn.disabled = true;
-    triggerBtn.style.opacity = "0.6";
-    triggerBtn.style.cursor = "not-allowed";
-  }
-
   try {
-    // Carrega JSON local da Mega-Sena
-    const response = await fetch("http://localhost/MEGASENA/MegaSena1.json");
-    if (!response.ok) throw new Error("Arquivo local indisponível");
+    // 🔹 Carregamento híbrido
+    let concursos = {};
+    const isNetlify = window.location.hostname.includes("netlify.app") || window.location.hostname.includes("localhost:8888");
 
-    const concursos = await response.json();
-    if (!concursos || typeof concursos !== "object") {
-      throw new Error("Histórico vazio ou inválido");
+    if (isNetlify) {
+      // ✅ Ambiente Netlify → usa endpoint real das Functions
+      const res = await fetch("/.netlify/functions/listar_concursos");
+      const { lista } = await res.json();
+
+      for (const blob of lista.blobs) {
+        const id = blob.key.replace("concurso-", "");
+        const resConcurso = await fetch(`/.netlify/functions/listar_concursos?id=${id}`);
+        const { dados } = await resConcurso.json();
+        concursos[id] = dados;
+      }
+    } else {
+      // ✅ Ambiente local ou estático → JSON publicado junto com o site
+      const response = await fetch("/SorteioApp/lotofacil_combinacoes_convertido.json", { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+      concursos = await response.json();
     }
 
-    // Frequência dos números (1–60)
-    const frequencia = Array(61).fill(0);
-    Object.values(concursos).forEach(dezenas => {
-      if (Array.isArray(dezenas)) {
-        dezenas.forEach(num => {
-          const numero = Number(num);
-          if (!isNaN(numero) && numero >= 1 && numero <= 60) {
-            frequencia[numero]++;
-          }
-        });
+    // 🔹 Normalizador universal para dezenas
+    function normalizarDezenas(valor) {
+      let dezenas = null;
+
+      if (Array.isArray(valor)) {
+        dezenas = valor;
+      } else if (Array.isArray(valor?.dezenas)) {
+        dezenas = valor.dezenas;
+      } else if (typeof valor === "string") {
+        dezenas = valor.split(/[\s,;|.-]+/);
+      } else if (typeof valor === "number") {
+        dezenas = [valor];
       }
+
+      if (!Array.isArray(dezenas)) return [];
+
+      return dezenas
+        .map(v => {
+          if (v === null || v === undefined) return null;
+          const str = String(v).trim().replace(",", ".");
+          const num = Math.round(parseFloat(str));
+          if (!Number.isFinite(num)) return null;
+          return (num >= 1 && num <= 25) ? num : null;
+        })
+        .filter(n => n !== null);
+    }
+
+    // Frequência dos números
+    const frequencia = Array(26).fill(0);
+    Object.values(concursos).forEach(val => {
+      const dezenas = normalizarDezenas(val);
+      dezenas.forEach(num => {
+        if (num !== null) frequencia[num]++;
+      });
     });
 
     // Organiza por frequência
     const numerosComFrequencia = [];
-    for (let i = 1; i <= 60; i++) {
+    for (let i = 1; i <= 25; i++) {
       numerosComFrequencia.push({ numero: i, freq: frequencia[i] });
     }
     numerosComFrequencia.sort((a, b) => a.freq - b.freq);
 
-    // Seleção principal: 3 menos + 3 mais
-    const menosFrequentes = numerosComFrequencia.slice(0, 10).map(n => n.numero);
-    const maisFrequentes = numerosComFrequencia.slice(-10).map(n => n.numero);
+    const menosFrequentes = numerosComFrequencia.slice(0, 8).map(n => n.numero);
+    const maisFrequentes = numerosComFrequencia.slice(-7).map(n => n.numero);
+
+    const menosPoolExtras = numerosComFrequencia.slice(0, 10).map(n => n.numero);
+    const maisPoolExtras = numerosComFrequencia.slice(-10).map(n => n.numero);
 
     function sortearAleatorios(array, quantidade) {
       const copia = [...array];
@@ -1867,29 +2131,41 @@ async function prepararPromissor() {
       return resultado;
     }
 
-    // Jogo promissor principal (Mega-Sena = 6 dezenas)
+    // Jogo promissor principal
     const selecionados = [
-      ...sortearAleatorios(menosFrequentes, 3),
-      ...sortearAleatorios(maisFrequentes, 3)
+      ...sortearAleatorios(menosFrequentes, 8),
+      ...sortearAleatorios(maisFrequentes, 7)
     ];
     const promissor = selecionados.sort((a, b) => a - b);
 
     window.jogoFixo = promissor;
-
-    // ✅ Preenche apenas os primeiros inputs já existentes (não recria nada)
     if (typeof preencherInputs === "function") preencherInputs(promissor);
+
+    // 🔹 Mantém layout dos inputs fixos do topo
+    const inputsTopo = document.querySelectorAll('#entrada input');
+    promissor.forEach((numero, index) => {
+      if (inputsTopo[index]) {
+        inputsTopo[index].value = String(numero).padStart(2, '0');
+        inputsTopo[index].style.backgroundColor =
+          maisFrequentes.includes(numero) ? "#0000ff" :
+          menosFrequentes.includes(numero) ? "#ff0000" : "#90ee90";
+        inputsTopo[index].style.fontWeight = "bold";
+        inputsTopo[index].style.fontFamily = "'Orbitron', Arial, sans-serif";
+        inputsTopo[index].style.color = "#fff";
+      }
+    });
 
     // Pergunta quantos extras
     const entrada = prompt("Quantos jogos adicionais deseja gerar?");
-    const qtdJogos = parseInt(entrada ?? "", 10);
+    const qtdJogos = parseInt(entrada, 10);
 
     if (!isNaN(qtdJogos) && qtdJogos > 0) {
       const limite = Math.min(qtdJogos, 20);
       const jogosExtras = [];
       for (let i = 0; i < limite; i++) {
         const jogo = [
-          ...sortearAleatorios(menosFrequentes, 3),
-          ...sortearAleatorios(maisFrequentes, 3)
+          ...sortearAleatorios(menosPoolExtras, 8),
+          ...sortearAleatorios(maisPoolExtras, 7)
         ].sort((a, b) => a - b);
         jogosExtras.push(jogo);
       }
@@ -1898,42 +2174,90 @@ async function prepararPromissor() {
       if (!resultadoExtras) {
         resultadoExtras = document.createElement("div");
         resultadoExtras.id = "resultadoExtras";
+        resultadoExtras.style.display = "grid";
+        resultadoExtras.style.gridTemplateColumns = "1fr";
+        resultadoExtras.style.gap = "16px";
         resultadoExtras.style.marginTop = "30px";
+        resultadoExtras.style.padding = "10px";
+        resultadoExtras.style.boxSizing = "border-box";
         document.body.appendChild(resultadoExtras);
       }
 
-      let html = `<p style="margin-top:20px; color:#ffcc00; font-weight:bold;">🎰 Jogos adicionais (${limite}):</p><ul style="list-style:none; padding-left:0;">`;
+      resultadoExtras.innerHTML = `<p style="grid-column:1/-1; color:#ffcc00; font-weight:bold; font-size:20px;">🟢 Jogos 100% Inéditos<br>🎰 Jogos adicionais (${limite}):</p>`;
+
       jogosExtras.forEach((jogo, i) => {
-        html += `
-          <li style="
-            margin-top:20px;
-            font-size:18px;
-            font-family:'Orbitron', sans-serif;
-            color:#ffffff;
-            text-shadow:0 0 8px #00ffd5, 0 0 12px #00ffd5;
-          ">
-            <strong style="color:#ff00ff; text-shadow:0 0 6px #ff00ff;">Jogo ${i + 1}:</strong><br>
-            <span style="color:#00ffd5; font-weight:bold; text-shadow:0 0 10px #00ffd5;">
-              ${jogo.join(" ... ")}
-            </span>
-          </li>
-        `;
+        const card = document.createElement("div");
+        card.style.background = "#202020";
+        card.style.borderRadius = "8px";
+        card.style.padding = "12px";
+        card.style.color = "#ffffff";
+        card.style.fontFamily = "'Orbitron', sans-serif";
+        card.style.textAlign = "center";
+        card.style.boxShadow = "0 0 8px #00ffd5";
+
+        const titulo = document.createElement("div");
+        titulo.textContent = `Jogo ${i + 1}`;
+        titulo.style.color = "#ff00ff";
+        titulo.style.fontWeight = "bold";
+        titulo.style.marginBottom = "8px";
+        titulo.style.textShadow = "0 0 6px #ff00ff";
+        card.appendChild(titulo);
+
+        const numeros = document.createElement("div");
+        numeros.style.display = "flex";
+        numeros.style.flexWrap = "wrap";
+        numeros.style.justifyContent = "center";
+        numeros.style.gap = "8px";
+        numeros.style.marginTop = "10px";
+
+        jogo.forEach(num => {
+          const span = document.createElement("span");
+          span.textContent = String(num).padStart(2,'0');
+          span.style.display = "inline-block";
+          span.style.width = "48px";
+          span.style.height = "48px";
+          span.style.lineHeight = "48px";
+          span.style.borderRadius = "6px";
+          span.style.fontWeight = "bold";
+          span.style.fontSize = "20px";
+          span.style.fontFamily = "'Orbitron', monospace";
+          span.style.textAlign = "center";
+          span.style.backgroundColor = "#111";
+          span.style.boxShadow = "0 0 8px rgba(0,255,213,0.8)";
+
+          if (maisFrequentes.includes(num)) {
+            span.style.color = "#00aaff";
+            span.style.border = "2px solid #00aaff";
+          } else if (menosFrequentes.includes(num)) {
+            span.style.color = "#ff3333";
+            span.style.border = "2px solid #ff3333";
+          } else {
+            span.style.color = "#00ffd5";
+            span.style.border = "2px solid #00ffd5";
+          }
+
+          numeros.appendChild(span);
+        });
+        card.appendChild(numeros);
+
+                const obs = document.createElement("div");
+        obs.textContent = "🔴 Vermelho = menos sorteados | 🔵 Azul = mais sorteados | 🟢 Verde = intermediários";
+        obs.style.marginTop = "10px";
+        obs.style.fontSize = "14px";
+        obs.style.color = "#ffffff";
+        obs.style.fontWeight = "bold";
+        card.appendChild(obs);
+
+        resultadoExtras.appendChild(card);
       });
-      html += `</ul>`;
-      resultadoExtras.innerHTML = html;
     }
 
-    atualizarStatus("🎯 Jogo promissor pronto (Mega-Sena)!", "#00ffd5");
+    atualizarStatus("🎯 Jogo promissor pronto!", "#00ffd5");
   } catch (error) {
-    console.error("❌ Erro ao preparar jogo promissor (local):", error);
-    atualizarStatus("❌ Erro ao gerar jogo promissor com dados locais.", "#ff0000");
+    console.error("❌ Erro ao preparar jogo promissor:", error);
+    atualizarStatus(`❌ Erro ao gerar jogo promissor: ${error.message}`, "#ff0000");
   } finally {
     window._promissorBusy = false;
-    if (triggerBtn) {
-      triggerBtn.disabled = false;
-      triggerBtn.style.opacity = "1";
-      triggerBtn.style.cursor = "pointer";
-    }
   }
 }
 </script>
@@ -1979,11 +2303,6 @@ async function prepararPromissor() {
   
   
  
-function registrarConcursoNaMemoria(concursoStr, dezenasArray) {
-  if (!window.concursoCache) window.concursoCache = {};
-  window.concursoCache[concursoStr] = dezenasArray;
-}
-
 async function buscarConcursoEspecifico() {
   const numero = prompt("Digite o número do concurso que deseja buscar:");
   const concursoInt = parseInt(numero);
@@ -2000,73 +2319,51 @@ async function buscarConcursoEspecifico() {
 
   let dezenas = null;
 
-  // 🔁 1. Busca no JSON local
   try {
-    const res = await fetch("MegaSena1.json", { cache: "no-store" });
-    const concursos = await res.json();
-    const dados = concursos[concursoStr];
-    if (Array.isArray(dados)) {
-      dezenas = dados;
-    } else if (dados && Array.isArray(dados.dezenas)) {
-      dezenas = dados.dezenas;
-    }
-    if (dezenas) {
-      console.log(`✅ JSON local respondeu com o concurso ${concursoStr}`);
+    // Tenta API da Caixa (pode falhar para histórico específico)
+    const resApi = await fetch(`https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/${concursoStr}`, {
+      headers: { Accept: "application/json" },
+      cache: "no-store"
+    });
+
+    if (resApi.ok) {
+      const dadosApi = await resApi.json();
+      dezenas = dadosApi.dezenas || dadosApi.listaDezenas || dadosApi.dezenasSorteadasOrdemSorteio || [];
     }
   } catch (e) {
-    console.warn("❌ Erro ao buscar do JSON local:", e);
+    console.warn("❌ Erro ao buscar concurso na API da Caixa:", e);
   }
 
-  // 🌐 2. Fallback via backend PHP + Python
-  if (!dezenas) {
-    try {
-      const res = await fetch(`buscar_concurso.php?concurso=${concursoStr}`);
-      const dados = await res.json();
-      if (Array.isArray(dados.dezenas) && dados.dezenas.length === 6) {
-        dezenas = dados.dezenas;
-        console.log(`✅ Concurso ${concursoStr} carregado via PHP + Python`);
-      } else {
-        console.warn("⚠️ PHP respondeu, mas sem dezenas válidas:", dados);
-      }
-    } catch (e) {
-      console.warn("❌ Erro ao buscar concurso via backend PHP:", e);
-    }
-  }
-
-  // 🧠 3. Fallback via cache interno
-  if (!dezenas && window.concursoCache && window.concursoCache[concursoStr]) {
-    dezenas = window.concursoCache[concursoStr];
-    console.log(`🧠 Concurso ${concursoStr} recuperado do cache interno`);
-  }
-
-  // ❌ Validação final
+  // Validação e fallback
   const dezenasNumeros = Array.isArray(dezenas)
-    ? dezenas.map(n => parseInt(n)).filter(n => !isNaN(n) && n >= 1 && n <= 60)
+    ? dezenas.map(n => parseInt(n)).filter(n => !isNaN(n) && n >= 1 && n <= 25)
     : [];
 
-  if (dezenasNumeros.length !== 6) {
+  if (dezenasNumeros.length !== 15) {
     infoConcurso.textContent = "❌ Concurso não encontrado.";
     infoConcurso.style.color = "red";
-    return alert(`❌ Concurso ${concursoStr} não encontrado ou incompleto.`);
+    alert(`❌ Concurso ${concursoStr} não encontrado na API. Tente importar o último concurso.`);
+    return;
   }
 
-  // ✅ Preenche os inputs em ordem crescente
+  // Preenche topo
   const ordenadas = [...dezenasNumeros].sort((a, b) => a - b);
   const formatadas = ordenadas.map(n => String(n).padStart(2, '0'));
+
   formatadas.forEach((num, i) => {
     if (inputsTopo[i]) {
       inputsTopo[i].value = num;
-      inputsTopo[i].style = `
-        background-color: #f0f8ff;
-        font-weight: bold;
-        font-family: 'Orbitron', Arial, sans-serif;
-        color: #000;
-        text-align: center;
-        border: 2px solid #00ffd5;
-        border-radius: 6px;
-        padding: 6px;
-        font-size: 19px;
-      `;
+      Object.assign(inputsTopo[i].style, {
+        backgroundColor: "#f0f8ff",
+        fontWeight: "bold",
+        fontFamily: "'Orbitron', Arial, sans-serif",
+        color: "#000",
+        textAlign: "center",
+        border: "2px solid #00ffd5",
+        borderRadius: "6px",
+        padding: "6px",
+        fontSize: "19px"
+      });
     }
   });
 
@@ -2075,13 +2372,11 @@ async function buscarConcursoEspecifico() {
   infoConcurso.style.fontSize = "24px";
   infoConcurso.style.borderBottom = "2px solid #00ffd5";
 
-  window.jogoFixo = dezenasNumeros;
-  if (!window.concursoCache) window.concursoCache = {};
-  window.concursoCache[concursoStr] = dezenasNumeros;
+  window.jogoFixo = ordenadas;
+  registrarConcursoNaMemoria(concursoStr, ordenadas);
 
   alert(`✅ Concurso ${concursoStr} carregado:\n${formatadas.join(" - ")}`);
 }
-
   // ✅ Cronômetro retrô + barra sincronizada
   let cronometroInterval;
   let segundosDecorridos = 0;
@@ -2136,261 +2431,405 @@ async function buscarConcursoEspecifico() {
   }
   
   
+
+
+// ✅ Atualiza concursos da Lotofácil e mostra na tela
 async function atualizarTodosConcursos() {
   const status = document.getElementById("statusAtualizacao");
-  status.textContent = "⏳ Atualizando concursos...";
-  status.style.color = "#4682b4";
-  status.style.fontWeight = "bold";
+  if (status) {
+    status.textContent = "⏳ Atualizando concursos...";
+    status.style.color = "#4682b4";
+    status.style.fontWeight = "bold";
+  }
 
   try {
-    const res = await fetch("atualizar_megas.php");
+    // Chama o PHP que executa o Python e retorna JSON
+    const res = await fetch("./atualizar_concursos.php", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    // Verifica se o PHP respondeu OK
-    if (!res.ok) {
-      throw new Error(`Resposta HTTP inválida: ${res.status}`);
+    const dados = await res.json().catch(() => null);
+    if (!dados || typeof dados !== "object") {
+      throw new Error("Resposta inválida do servidor");
     }
 
-    let dados;
-    try {
-      dados = await res.json();
-    } catch (parseError) {
-      throw new Error("Resposta não está em formato JSON válido");
-    }
-
-    // 1. Erro real do PHP/Python (quando 'erro' tem conteúdo)
-    if (dados.erro && dados.erro !== null && dados.erro !== "") {
-      status.textContent = `🚫 Erro na atualização: ${dados.erro}`;
-      status.style.color = "#cc0000";
-      status.style.fontSize = "16px";
-      status.style.fontWeight = "bold";
-      console.error("Log completo do erro:", dados.log);
-      return;
-    }
-
-    // 2. Novos concursos adicionados
-    if (dados.sucesso) {
-      status.textContent = `🎉 ${dados.novos} concurso(s) atualizado(s) com sucesso!`;
-      status.style.color = "#00aa00";
-      status.style.fontSize = "18px";
-      status.style.fontWeight = "bold";
-
-      // Importa o último concurso atualizado
-      if (typeof importarUltimos === "function") {
-        await importarUltimos();
+    if (status) {
+      if (dados.sucesso) {
+        status.textContent = "🎉 Concursos atualizados com sucesso!";
+        status.style.color = "#00aa00";
+      } else {
+        status.textContent = dados.mensagem || "⚠️ Não foi possível atualizar.";
+        status.style.color = "#cc6600";
       }
-      return;
     }
 
-    // 3. Nenhum concurso novo (já atualizado)
-    const numeroUltimo = (typeof dados.ultimoSalvo === "number") ? dados.ultimoSalvo : "não identificado";
-    const numeroDisponivel = (typeof dados.ultimoDisponivel === "number") ? dados.ultimoDisponivel : "não identificado";
-
-    status.textContent =
-      `📌 Tudo atualizado! ` +
-      `Aguarde o próximo sorteio da Mega-Sena.`; // ✅ Corrigido para Mega-Sena
-    status.style.color = "#4682b4";
-    status.style.fontSize = "16px";
-    status.style.fontWeight = "bold";
+    // Renderiza na tela o último concurso
+    renderizarConcursoLotofacil(dados);
 
   } catch (e) {
-    // 4. Falha de comunicação ou JSON inválido
-    status.textContent =
-      "🚫 Ops! Tivemos um problema na atualização. Por favor, tente novamente em alguns instantes.";
-    status.style.color = "#cc0000";
-    status.style.fontSize = "16px";
-    status.style.fontWeight = "bold";
-    console.error("Detalhes do erro:", e);
+    if (status) {
+      status.textContent = "🚫 Erro ao atualizar concursos.";
+      status.style.color = "#cc0000";
+    }
+    console.error("Erro:", e);
   }
 }
-   
-  
+
+// 🔹 Renderiza dezenas, jogo sugerido e array dinâmica
+function renderizarConcursoLotofacil(dados) {
+  const numero = dados.ultimoSalvo ?? "desconhecido";
+  const data = dados.dataConcurso ?? "";
+  const dezenas = Array.isArray(dados.dezenas) ? dados.dezenas : [];
+  const jogos = Array.isArray(dados.jogos) ? dados.jogos : [];
+  const melhores = Array.isArray(dados.melhores) ? dados.melhores : [];
+
+  let container = document.getElementById("resultadoDinamico");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "resultadoDinamico";
+    const area = document.getElementById("areaResultados");
+    if (area) area.appendChild(container);
+  }
+  container.innerHTML = "";
+
+  // Título
+  const titulo = document.createElement("h3");
+  titulo.textContent = `Concurso nº ${numero}${data ? " - " + data : ""}`;
+  container.appendChild(titulo);
+
+  // Grid de dezenas
+  const grid = document.createElement("div");
+  grid.classList.add("dezenas-grid");
+  dezenas.forEach(n => {
+    const span = document.createElement("span");
+    span.textContent = String(n).padStart(2, "0");
+    span.classList.add("dezena");
+    grid.appendChild(span);
+  });
+  container.appendChild(grid);
+
+  // Último jogo sugerido
+  if (jogos.length > 0) {
+    const ultimoJogo = jogos[0];
+    const jogosDiv = document.createElement("div");
+    jogosDiv.classList.add("jogo-sugerido");
+    jogosDiv.innerHTML = "<strong>🎯 Último jogo sugerido:</strong><br>" +
+      ultimoJogo.map(n =>
+        `<span class="${melhores.includes(n) ? 'melhor' : 'normal'}">${String(n).padStart(2,"0")}</span>`
+      ).join(" ");
+    container.appendChild(jogosDiv);
+  }
+
+  // Array dinâmica
+  const arrayDiv = document.createElement("div");
+  arrayDiv.classList.add("array-concurso");
+  arrayDiv.innerHTML =
+    `<strong>📊 Último concurso nº ${numero}${data ? " - " + data : ""}:</strong><br>` +
+    `[ ${dezenas.map(n => String(n).padStart(2,"0")).join(", ")} ]`;
+  container.appendChild(arrayDiv);
+}
+
+
+// ✅ Importa o último concurso direto da API da Caixa (funciona em produção Netlify)
 async function importarUltimos() {
   const infoConcurso = document.getElementById("infoConcurso");
   const inputsTopo = document.querySelectorAll('#entradaTopo input');
   infoConcurso.textContent = "⏳ Buscando último concurso...";
   infoConcurso.style.color = "#4682b4";
 
-  let ultimaChave = null;
-  let dezenas = null;
-
   try {
-    // força o navegador a buscar versão nova do JSON (evita cache)
-    const res = await fetch("MegaSena1.json?nocache=" + Date.now());
-    const dados = await res.json();
-    console.log("🔎 JSON carregado:", dados);
+    // 🌐 Consulta direto a API oficial da Caixa
+    const resApi = await fetch("https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil", {
+      headers: { Accept: "application/json" },
+      cache: "no-store"
+    });
+    const dadosApi = await resApi.json();
 
-    // pega todas as chaves numéricas
-    const chaves = Object.keys(dados)
-      .map(k => parseInt(k))
-      .filter(n => !isNaN(n));
+    // Extrai número do concurso e dezenas
+    const numero = dadosApi.numero || dadosApi.concurso || (dadosApi.resultado ? dadosApi.resultado.numero : null);
+    let dezenasRaw = dadosApi.dezenas || dadosApi.listaDezenas || dadosApi.dezenasSorteadasOrdemSorteio || [];
 
-    const maiorConcurso = Math.max(...chaves);
-
-    // acessa a chave como string
-    let lista = dados[String(maiorConcurso)];
-
-    // corrige dezenas: converte para número e remove inválidos
-    if (Array.isArray(lista)) {
-      dezenas = lista
-        .map(n => parseInt(n))
-        .filter(n => Number.isInteger(n) && n >= 1 && n <= 60);
-
-      if (dezenas.length === 6) {
-        ultimaChave = maiorConcurso;
+    // Normaliza dezenas
+    if (typeof dezenasRaw === "string") {
+      try {
+        dezenasRaw = JSON.parse(dezenasRaw);
+      } catch {
+        dezenasRaw = [];
       }
     }
-  } catch (e) {
-    console.warn("❌ Erro ao carregar JSON local:", e);
-  }
 
-  // validação final
-  if (!dezenas || dezenas.length !== 6 || !ultimaChave) {
-    infoConcurso.textContent = "❌ Último concurso não encontrado ou incompleto.";
-    infoConcurso.style.color = "red";
-    alert("⚠️ Não foi possível carregar o último concurso.");
-    return;
-  }
+    const dezenas = Array.isArray(dezenasRaw)
+      ? dezenasRaw
+          .map(n => Number(n))
+          .filter(n => Number.isInteger(n) && n >= 1 && n <= 25)
+          .sort((a, b) => a - b)
+          .slice(0, 15)
+      : [];
 
-  // formata dezenas em ordem crescente
-  const formatadas = dezenas.sort((a, b) => a - b).map(n => String(n).padStart(2, '0'));
-
-  // joga nos inputs do topo
-  formatadas.forEach((num, i) => {
-    if (inputsTopo[i]) {
-      inputsTopo[i].value = num;
-      Object.assign(inputsTopo[i].style, {
-        backgroundColor: "#000000",
-        fontWeight: "bold",
-        fontFamily: "'Orbitron', Arial, sans-serif",
-        color: "#FFA500",
-        textAlign: "center",
-        border: "2px solid #00ffd5",
-        borderRadius: "6px",
-        padding: "6px",
-        fontSize: "19px"
-      });
+    // ✅ validação final
+    if (!dezenas || dezenas.length !== 15 || !numero) {
+      infoConcurso.textContent = "❌ Último concurso não encontrado ou incompleto.";
+      infoConcurso.style.color = "red";
+      alert("⚠️ Não foi possível carregar o último concurso.");
+      return;
     }
-  });
 
-  // exibe info do concurso
-  infoConcurso.textContent = `Concurso nº ${ultimaChave}`;
-  Object.assign(infoConcurso.style, {
-    color: "#00ffd5",
-    fontSize: "24px",
-    borderBottom: "2px solid #00ffd5"
-  });
+    // ✅ formata dezenas
+    const formatadas = dezenas.map(n => String(n).padStart(2, '0'));
 
-  // guarda em variável global para uso em outras funções
-  window.jogoFixo = dezenas;
+    // ✅ joga nos inputs do topo
+    formatadas.forEach((num, i) => {
+      if (inputsTopo[i]) {
+        inputsTopo[i].value = num;
+        Object.assign(inputsTopo[i].style, {
+          backgroundColor: "#000000",
+          fontWeight: "bold",
+          fontFamily: "'Orbitron', Arial, sans-serif",
+          color: "#FFA500",
+          textAlign: "center",
+          border: "2px solid #00ffd5",
+          borderRadius: "6px",
+          padding: "6px",
+          fontSize: "19px"
+        });
+      }
+    });
 
-  alert(`✅ Último concurso ${ultimaChave} carregado:\n${formatadas.join(" - ")}`);
+    // ✅ exibe info do concurso
+    infoConcurso.textContent = `Concurso nº ${numero}`;
+    Object.assign(infoConcurso.style, {
+      color: "#00ffd5",
+      fontSize: "24px",
+      borderBottom: "2px solid #00ffd5"
+    });
+
+    // ✅ guarda em variável global
+    window.jogoFixo = dezenas;
+
+    alert(`✅ Último concurso ${numero} carregado:\n${formatadas.join(" - ")}`);
+
+  } catch (e) {
+    console.error("❌ Erro ao carregar dados da API da Caixa:", e);
+    infoConcurso.textContent = "🚫 Falha ao buscar último concurso.";
+    infoConcurso.style.color = "red";
+  }
 }
-
 
 async function sorteioBitcoin() {
   const entradaTopo = document.querySelectorAll('#entradaTopo input');
-const resultado = document.getElementById("resultadoBitcoin");
+  const resultado = document.getElementById("resultadoBitcoin");
 
-resultado.innerHTML = "";
-resultado.style.display = "flex";
-resultado.style.flexDirection = "column";
-resultado.style.alignItems = "center";
-resultado.style.padding = "20px";
-resultado.style.boxSizing = "border-box";
+  resultado.innerHTML = "";
+  resultado.style.display = "flex";
+  resultado.style.flexDirection = "column";
+  resultado.style.alignItems = "center";
+  resultado.style.padding = "20px";
+  resultado.style.boxSizing = "border-box";
 
-// 🔹 Agora não importa quantos inputs existem no HTML
-const numerosOriginais = Array.from(entradaTopo)
-  .map(input => parseInt(input.value))
-  .filter((val, idx, arr) => !isNaN(val) && val >= 1 && val <= 60 && arr.indexOf(val) === idx)
-  .slice(0, 6); // ✅ pega só os 6 primeiros válidos
+  // Verifica se existem até 20 inputs
+  if (!entradaTopo || entradaTopo.length < 15 || entradaTopo.length > 20 || !resultado) {
+    resultado.innerHTML = "<p style='color:red; font-weight:bold;'>⚠️ Preencha entre 15 e 20 dezenas válidas no topo antes de sortear.</p>";
+    return;
+  }
 
-if (numerosOriginais.length !== 6) {
-  resultado.innerHTML = "<p style='color:red; font-weight:bold;'>⚠️ Preencha pelo menos 6 dezenas válidas no topo antes de sortear.</p>";
-  return;
-}
+  // Captura os números digitados
+  const numerosOriginais = Array.from(entradaTopo)
+    .map(input => parseInt(input.value))
+    .filter((val, idx, arr) => !isNaN(val) && val >= 1 && val <= 25 && arr.indexOf(val) === idx);
 
-  // 🔹 Prompt para escolher quantos jogos gerar
+  if (numerosOriginais.length < 15 || numerosOriginais.length > 20) {
+    resultado.innerHTML = "<p style='color:red; font-weight:bold;'>⚠️ Os números devem ser únicos e entre 1 e 25 (mínimo 15, máximo 20).</p>";
+    return;
+  }
+
+  // Quantos jogos gerar
   let qtdJogos = parseInt(prompt("Quantos jogos deseja gerar? (1 a 100)"), 10);
   if (isNaN(qtdJogos) || qtdJogos < 1 || qtdJogos > 100) {
     alert("Valor inválido! Será usado o padrão de 9 jogos.");
     qtdJogos = 9;
   }
 
-  const universo = Array.from({ length: 60 }, (_, i) => i + 1);
-  const response = await fetch("MegaSena1.json");
-  const jogosAnteriores = await response.json();
+  const universo = Array.from({ length: 25 }, (_, i) => i + 1);
+
+  // 🔹 Carregamento apenas do JSON local
+  let jogosAnteriores = {};
+  try {
+    const response = await fetch("/SorteioApp/lotofacil_combinacoes_convertido.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const texto = await response.text();
+    try {
+      jogosAnteriores = JSON.parse(texto);
+    } catch (e) {
+      console.error("Resposta não era JSON:", texto.slice(0, 300));
+      throw new Error("Formato inválido do JSON local");
+    }
+  } catch (err) {
+    console.error("Erro ao carregar JSON local:", err);
+    resultado.innerHTML = "<p style='color:red; font-weight:bold;'>❌ Falha ao carregar o JSON local.</p>";
+    return;
+  }
+
+  // Normalizador universal
+  function normalizarJogo(jogo) {
+    const dezenasBrutas = Array.isArray(jogo)
+      ? jogo
+      : Array.isArray(jogo?.dezenas)
+        ? jogo.dezenas
+        : null;
+
+    if (!Array.isArray(dezenasBrutas)) return [];
+
+    const nums = dezenasBrutas
+      .map(v => {
+        if (v === null || v === undefined) return null;
+        const str = String(v).trim().replace(",", ".");
+        const num = Math.round(parseFloat(str));
+        if (!Number.isFinite(num)) return null;
+        return (num >= 1 && num <= 25) ? num : null;
+      })
+      .filter(n => n !== null);
+
+    return Array.from(new Set(nums)).sort((a, b) => a - b);
+  }
 
   const contagem = {};
-  for (let i = 1; i <= 60; i++) contagem[i] = 0;
+  const trioContador = {};
+  for (let i = 1; i <= 25; i++) contagem[i] = 0;
 
   Object.values(jogosAnteriores).forEach(item => {
-    const dezenas = Array.isArray(item) ? item : Array.isArray(item.dezenas) ? item.dezenas : null;
-    if (dezenas) {
+    const dezenas = normalizarJogo(item);
+    if (dezenas.length) {
       dezenas.forEach(num => {
         if (contagem[num] !== undefined) contagem[num]++;
       });
+      for (let i = 0; i < dezenas.length - 2; i++) {
+        const trio = dezenas.slice(i, i + 3).sort((a, b) => a - b).join("-");
+        trioContador[trio] = (trioContador[trio] || 0) + 1;
+      }
     }
   });
 
-  const topFrequentes = Object.entries(contagem)
+  const melhores13 = Object.entries(contagem)
     .sort((a, b) => b[1] - a[1])
+    .slice(0, 13)
     .map(([num]) => parseInt(num));
 
-  const melhores10 = topFrequentes.slice(0, 10);
+  const molduraSet = new Set([1,2,3,4,5,6,10,11,15,16,20,21,25]);
 
-  function validarJogo(jogo) {
+  function calcularEntropia(jogo) {
+    const grupos = {
+      A: jogo.filter(n => n <= 5).length,
+      B: jogo.filter(n => n >= 6 && n <= 10).length,
+      C: jogo.filter(n => n >= 11 && n <= 15).length,
+      D: jogo.filter(n => n >= 16 && n <= 20).length,
+      E: jogo.filter(n => n >= 21).length,
+    };
+    return Object.values(grupos).reduce((acc, qtd) => {
+      if (qtd > 0) {
+        const p = qtd / 15;
+        acc -= p * Math.log2(p);
+      }
+      return acc;
+    }, 0);
+  }
+
+  function validarPeneiras(jogo) {
     const soma = jogo.reduce((acc, n) => acc + n, 0);
     const pares = jogo.filter(n => n % 2 === 0).length;
+    const moldura = jogo.filter(n => molduraSet.has(n)).length;
+    const repetidas = jogo.filter(n => numerosOriginais.includes(n)).length;
+    const entropia = calcularEntropia(jogo);
 
-    // Critérios simples para Mega-Sena
+    let sequencia = 1;
+    for (let i = 1; i < jogo.length; i++) {
+      if (jogo[i] === jogo[i - 1] + 1) {
+        sequencia++;
+        if (sequencia > 3) return false;
+      } else {
+        sequencia = 1;
+      }
+    }
+
+    const linhas = [0,0,0,0,0];
+    const colunas = [0,0,0,0,0];
+    jogo.forEach(n => {
+      linhas[Math.floor((n - 1) / 5)]++;
+      colunas[(n - 1) % 5]++;
+    });
+    if (linhas.some(l => l < 2 || l > 4)) return false;
+    if (colunas.some(c => c < 2 || c > 4)) return false;
+
+    for (let i = 0; i < jogo.length - 2; i++) {
+      const trio = jogo.slice(i, i + 3).sort((a, b) => a - b).join("-");
+      if (trioContador[trio] && trioContador[trio] > 8) return false;
+    }
+
+    const espelho = jogo.every(n => numerosOriginais.includes(26 - n));
+    if (espelho) return false;
+
     return (
-      soma >= 100 && soma <= 210 && // soma razoável
-      pares >= 2 && pares <= 4 &&   // equilíbrio pares/ímpares
-      new Set(jogo).size === 6      // sem repetição
+      soma >= 170 && soma <= 230 &&
+      pares >= 6 && pares <= 9 &&
+      moldura >= 6 && moldura <= 9 &&
+      repetidas >= 5 && repetidas <= 9 &&
+      entropia >= 1.8 && entropia <= 2.3
     );
   }
 
-  function calcularIPE(jogo) {
+  function calcularIPE(jogo, soma, pares, moldura, filtrados) {
     let pontos = 0;
-    const soma = jogo.reduce((acc, n) => acc + n, 0);
-    const pares = jogo.filter(n => n % 2 === 0).length;
-    const frequentes = jogo.filter(n => melhores10.includes(n));
+    if (soma >= 180 && soma <= 210) pontos++;
+    if (pares >= 6 && pares <= 9) pontos++;
+    if (moldura >= 8 && moldura <= 11) pontos++;
+    if (filtrados.length >= 8) pontos++;
 
-    if (soma >= 120 && soma <= 180) pontos++;
-    if (pares >= 2 && pares <= 4) pontos++;
-    if (frequentes.length >= 2) pontos++;
-    if (!jogo.some((n, i, arr) => arr.includes(n + 1))) pontos++; // evita sequência longa
-    if (new Set(jogo).size === 6) pontos++;
-
+    let seq = 1;
+    for (let i = 1; i < jogo.length; i++) {
+      if (jogo[i] === jogo[i - 1] + 1) {
+        seq++;
+        if (seq > 2) break;
+      } else {
+        seq = 1;
+      }
+    }
+    if (seq <= 2) pontos++;
     return pontos;
   }
 
   const jogosComIPE = [];
-
-  for (let j = 1; j <= qtdJogos; j++) {
+  
+    for (let j = 1; j <= qtdJogos; j++) {
     let tentativa = 0;
     let jogoFinal = [];
 
     while (tentativa < 1000) {
-      const jogo = [];
-      while (jogo.length < 6) {
-        const n = universo[Math.floor(Math.random() * universo.length)];
-        if (!jogo.includes(n)) jogo.push(n);
+      const reaproveitados = [];
+      while (reaproveitados.length < 9) {
+        const n = numerosOriginais[Math.floor(Math.random() * numerosOriginais.length)];
+        if (!reaproveitados.includes(n)) reaproveitados.push(n);
       }
-      jogoFinal = jogo.sort((a, b) => a - b);
-      if (validarJogo(jogoFinal)) break;
+
+      const restantes = universo.filter(n => !reaproveitados.includes(n));
+      const novos = [];
+      while (novos.length < 6) {
+        const n = restantes[Math.floor(Math.random() * restantes.length)];
+        if (!novos.includes(n)) novos.push(n);
+      }
+
+      jogoFinal = [...reaproveitados, ...novos].sort((a, b) => a - b);
+      if (validarPeneiras(jogoFinal)) break;
       tentativa++;
     }
 
     const soma = jogoFinal.reduce((acc, n) => acc + n, 0);
     const pares = jogoFinal.filter(n => n % 2 === 0).length;
-    const filtrados = jogoFinal.filter(n => melhores10.includes(n));
-    const ipe = calcularIPE(jogoFinal);
+    const moldura = jogoFinal.filter(n => molduraSet.has(n)).length;
+    const filtrados = jogoFinal.filter(n => melhores13.includes(n));
+    const ipe = calcularIPE(jogoFinal, soma, pares, moldura, filtrados);
 
-    jogosComIPE.push({ jogo: jogoFinal, ipe, soma, pares, filtrados });
+    jogosComIPE.push({ jogo: jogoFinal, ipe, soma, pares, moldura, filtrados });
   }
 
-  // Renderização
+  // 🔹 Renderização dos jogos
   const container = document.createElement("div");
   container.style.display = "flex";
   container.style.flexDirection = "column";
@@ -2399,15 +2838,15 @@ if (numerosOriginais.length !== 6) {
   container.style.width = "100%";
 
   const titulo = document.createElement("h3");
-  titulo.textContent = "🏆 Ganhador estilo Bitcoin (Mega-Sena)";
+  titulo.textContent = "🏆 Ganhador estilo Bitcoin";
   titulo.style.color = "#00ffd5";
   titulo.style.marginBottom = "20px";
   container.appendChild(titulo);
 
   jogosComIPE.forEach((jogoObj, index) => {
-    const cor = jogoObj.ipe >= 4 ? "#00ff80" : jogoObj.ipe === 3 ? "#ffd700" : "#999";
-    const bg = jogoObj.ipe >= 4 ? "#003322" : jogoObj.ipe === 3 ? "#332900" : "#1a1a1a";
-    const emoji = jogoObj.ipe >= 4 ? "💎" : jogoObj.ipe === 3 ? "⭐" : "🎲";
+    const cor = jogoObj.ipe === 5 ? "#00ff80" : jogoObj.ipe === 4 ? "#ffd700" : "#999";
+    const bg = jogoObj.ipe === 5 ? "#003322" : jogoObj.ipe === 4 ? "#332900" : "#1a1a1a";
+    const emoji = jogoObj.ipe === 5 ? "💎" : jogoObj.ipe === 4 ? "⭐" : "🎲";
 
     const bloco = document.createElement("div");
     bloco.style.marginBottom = "18px";
@@ -2431,56 +2870,71 @@ if (numerosOriginais.length !== 6) {
     linha.style.gap = "6px";
 
     jogoObj.jogo.forEach(n => {
-  const span = document.createElement("span");
-  span.textContent = String(n).padStart(2, '0');
-  span.style.display = "inline-block";
-  span.style.width = "48px";
-  span.style.height = "48px";
-  span.style.lineHeight = "48px";
-  span.style.textAlign = "center";
-  span.style.fontWeight = "bold";
-  span.style.fontSize = "18px";
-  span.style.borderRadius = "6px";
-  span.style.color = "#ffffff";
-  span.style.backgroundColor = numerosOriginais.includes(n) ? "#004d33" : "#00264d";
-  span.style.boxShadow = `0 0 6px ${cor}`;
-  linha.appendChild(span);
-});
+      const span = document.createElement("span");
+      span.textContent = String(n).padStart(2, '0');
+      span.style.display = "inline-block";
+      span.style.width = "48px";
+      span.style.height = "48px";
+      span.style.lineHeight = "48px";
+      span.style.textAlign = "center";
+      span.style.fontWeight = "bold";
+      span.style.fontSize = "18px";
+      span.style.borderRadius = "6px";
+      span.style.color = "#ffffff";
+      span.style.backgroundColor = numerosOriginais.includes(n) ? "#004d33" : "#00264d";
+      span.style.boxShadow = `0 0 6px ${cor}`;
+      linha.appendChild(span);
+    });
 
-bloco.appendChild(linha);
+    bloco.appendChild(linha);
 
-const info = document.createElement("div");
-info.innerHTML = `
-  📊 Soma: ${jogoObj.soma} | ⚖️ Pares: ${jogoObj.pares} | Ímpares: ${6 - jogoObj.pares}<br>
-  🔍 Frequentes: ${jogoObj.filtrados.join(", ")}<br>
-  <strong style="color:${cor};">🌟 Índice de Performance Estratégica: ${jogoObj.ipe}/5</strong>
-`;
-bloco.appendChild(info);
-container.appendChild(bloco);
-}); // fecha o forEach
+    const info = document.createElement("div");
+    info.innerHTML = `
+      📊 Soma: ${jogoObj.soma} | ⚖️ Pares: ${jogoObj.pares} | Ímpares: ${15 - jogoObj.pares} | 🧩 Moldura: ${jogoObj.moldura}<br>
+      🔍 Frequentes: ${jogoObj.filtrados.join(", ")}<br>
+      <strong style="color:${cor};">🌟 Índice de Performance Estratégica: ${jogoObj.ipe}/5</strong>
+    `;
+    bloco.appendChild(info);
+    container.appendChild(bloco);
+  });
 
-resultado.appendChild(container);
+  resultado.appendChild(container);
 
-// 🔹 Bloco de inspiração dentro da função
-const inspiracao = document.createElement("div");
-inspiracao.innerHTML = `
-  <p style="color: #ffd700; font-style: italic; margin-top: 20px;">
-    💡 Em janeiro de 2023, um minerador solo com apenas <strong>49 TH/s</strong> encontrou sozinho o bloco <strong>907283</strong> do Bitcoin.
-    <br>Chance estimada: <strong>1 em 130 mil por dia</strong>. Recompensa: <strong>3,154 BTC</strong> (~R$ 2 milhões).
-    <br><br>
-    Essa façanha não foi sorte — foi persistência, estratégia e fé na improbabilidade.
-    <br><br>
-    Cada jogo aqui carrega esse espírito: uma chance rara, mas real, de romper a lógica e surpreender com uma combinação improvável, mas estatisticamente possível.
-    <br><br>
-    Que a sorte esteja do seu lado na Mega-Sena. 🍀🚀
-  </p>
-`;
-resultado.appendChild(inspiracao);
-} // fecha a função sorteioBitcoin corretamente
+  const inspiracao = document.createElement("div");
+  inspiracao.innerHTML = `
+    <p style="color: #ffd700; font-style: italic; margin-top: 20px;">
+      💡 Em janeiro de 2023, um minerador solo com apenas <strong>49 TH/s</strong> encontrou sozinho o bloco <strong>907283</strong> do Bitcoin.
+      <br>
+      Chance estimada: <strong>1 em 130 mil por dia</strong>. Recompensa: <strong>3,154 BTC</strong> (~R$ 2 milhões).
+      <br><br>
+      Essa façanha não foi sorte — foi persistência, estratégia e fé na improbabilidade.
+      <br><br>
+      Cada jogo aqui carrega esse espírito: uma chance rara, mas real, de romper a lógica e surpreender.
+      <br><br>
+      Que a sorte esteja do seu lado. 🍀🚀
+    </p>
+  `;
+  resultado.appendChild(inspiracao);
 
+
+}
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
 				
 				
- function gerarJogosPromissores() {
+ // ✅ Função híbrida: Local + Netlify, blindada para aceitar vários formatos
+async function gerarJogosPromissores() {
   let qtd = prompt("🎯 Quantos jogos deseja gerar? (1 a 15)");
   qtd = parseInt(qtd, 10);
 
@@ -2489,139 +2943,261 @@ resultado.appendChild(inspiracao);
     return;
   }
 
-  fetch("MegaSena1.json")
-    .then(res => res.json())
-    .then(historicoConcursos => {
-      const container = document.getElementById("jogosGerados");
+  try {
+    // 🔹 Carregamento híbrido
+    let historicoConcursos = {};
+    const isNetlify = window.location.hostname.includes("netlify.app") || window.location.hostname.includes("localhost:8888");
 
-      container.style.display = "flex";
-      container.style.flexDirection = "column";
-      container.style.alignItems = "center";
-      container.style.justifyContent = "center";
-      container.style.flexWrap = "wrap";
-      container.style.gap = "16px";
-      container.style.marginTop = "20px";
+    if (isNetlify) {
+      const res = await fetch("/.netlify/functions/listar_concursos");
+      const { lista } = await res.json();
 
-      container.innerHTML = "<h3 style='color:#00ffd5;'>📈 Estratégias Otimizadas (4–5 acertos):</h3>";
+      for (const blob of lista.blobs) {
+        const id = blob.key.replace("concurso-", "");
+        const resConcurso = await fetch(`/.netlify/functions/listar_concursos?id=${id}`);
+        const { dados } = await resConcurso.json();
+        historicoConcursos[id] = dados;
+      }
+    } else {
+      const res = await fetch("/SorteioApp/lotofacil_combinacoes_convertido.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`Erro HTTP ${res.status}`);
+      historicoConcursos = await res.json();
+    }
 
-      const candidatos = [];
-      const frequenciaReal = {};
-      const todas = Array.from({ length: 60 }, (_, i) => i + 1);
+    // 🔹 Normalizador universal para dezenas
+    function normalizarDezenas(valor) {
+      let dezenas = null;
 
-      // ✅ Corrigido para aceitar novo formato do JSON
-      const concursosFormatados = Object.values(historicoConcursos)
-        .map(item => Array.isArray(item) ? item : Array.isArray(item.dezenas) ? item.dezenas : null)
-        .filter(arr => Array.isArray(arr) && arr.length === 6);
+      if (Array.isArray(valor)) {
+        dezenas = valor;
+      } else if (Array.isArray(valor?.dezenas)) {
+        dezenas = valor.dezenas;
+      } else if (typeof valor === "string") {
+        dezenas = valor.split(/[\s,;|.-]+/);
+      } else if (typeof valor === "number") {
+        dezenas = [valor];
+      }
 
-      concursosFormatados.forEach(dezenas => {
-        dezenas.forEach(n => {
-          frequenciaReal[n] = (frequenciaReal[n] || 0) + 1;
-        });
+      if (!Array.isArray(dezenas)) return [];
+
+      return dezenas
+        .map(v => {
+          if (v === null || v === undefined) return null;
+          const str = String(v).trim().replace(",", ".");
+          const num = Math.round(parseFloat(str));
+          if (!Number.isFinite(num)) return null;
+          return (num >= 1 && num <= 25) ? num : null;
+        })
+        .filter(n => n !== null);
+    }
+
+    // 🔹 Container de saída
+    const container = document.getElementById("jogosGerados");
+    if (!container) {
+      throw new Error("Elemento #jogosGerados não encontrado no HTML.");
+    }
+    container.style.display = "flex";
+    container.style.flexDirection = "column";
+    container.style.alignItems = "center";
+    container.style.justifyContent = "center";
+    container.style.flexWrap = "wrap";
+    container.style.gap = "16px";
+    container.style.marginTop = "20px";
+
+    container.innerHTML = "<h3 style='color:#00ffd5;'>📈 Estratégias Otimizadas (12 a 14 pts):</h3>";
+
+    const candidatos = [];
+    const frequenciaReal = {};
+    const todas = Array.from({ length: 25 }, (_, i) => i + 1);
+
+    const concursosFormatados = Object.values(historicoConcursos)
+      .map(item => normalizarDezenas(item))
+      .filter(arr => Array.isArray(arr) && arr.length === 15);
+
+    concursosFormatados.forEach(dezenas => {
+      dezenas.forEach(n => {
+        frequenciaReal[n] = (frequenciaReal[n] || 0) + 1;
       });
-
-      // Frequência simulada
-      const frequenciaSimulada = Array(60).fill(0);
-      for (let i = 0; i < 1000; i++) {
-        const sorteados = [];
-        while (sorteados.length < 6) {
-          const n = Math.floor(Math.random() * 60) + 1;
-          if (!sorteados.includes(n)) sorteados.push(n);
-        }
-        sorteados.forEach(n => frequenciaSimulada[n - 1]++);
-      }
-
-      const pesoFinal = {};
-      for (let i = 1; i <= 60; i++) {
-        const real = frequenciaReal[i] || 0;
-        const simulado = frequenciaSimulada[i - 1] || 0;
-        pesoFinal[i] = (real * 0.5) + (simulado * 0.5);
-      }
-
-      // Gera 100 jogos candidatos
-      for (let i = 0; i < 100; i++) {
-        const jogo = [];
-        while (jogo.length < 6) {
-          const n = Math.floor(Math.random() * 60) + 1;
-          if (!jogo.includes(n)) jogo.push(n);
-        }
-        jogo.sort((a, b) => a - b);
-
-        const nota = jogo.reduce((soma, n) => soma + (pesoFinal[n] || 0), 0);
-
-        let vezesEntre4e5 = 0;
-        concursosFormatados.forEach(concurso => {
-          const acertos = jogo.filter(n => concurso.includes(n)).length;
-          if (acertos >= 4 && acertos <= 5) vezesEntre4e5++;
-        });
-
-        candidatos.push({ jogo, nota, vezesEntre4e5 });
-      }
-
-      candidatos.sort((a, b) => b.vezesEntre4e5 - a.vezesEntre4e5);
-      const melhores = candidatos.slice(0, qtd);
-
-      const melhorJogo = melhores[0].jogo;
-      if (typeof preencherInputs === "function") {
-        preencherInputs(melhorJogo);
-      }
-
-      melhores.forEach(({ jogo, vezesEntre4e5 }, index) => {
-        const bloco = document.createElement("div");
-        bloco.style.display = "flex";
-        bloco.style.flexDirection = "column";
-        bloco.style.alignItems = "center";
-        bloco.style.justifyContent = "center";
-        bloco.style.marginBottom = "20px";
-        bloco.style.padding = "12px";
-        bloco.style.border = "1px solid #888";
-        bloco.style.borderRadius = "10px";
-        bloco.style.backgroundColor = "#1e1e1e";
-        bloco.style.color = "#f0f0f0";
-
-        const titulo = document.createElement("h4");
-        titulo.textContent = `🎲 Jogo ${index + 1}`;
-        titulo.style.marginBottom = "10px";
-        titulo.style.color = "#00ffd5";
-        bloco.appendChild(titulo);
-
-        const dezenas = document.createElement("div");
-        dezenas.style.display = "flex";
-        dezenas.style.flexWrap = "wrap";
-        dezenas.style.gap = "8px";
-        dezenas.style.justifyContent = "center";
-
-        jogo.forEach(num => {
-          const span = document.createElement("span");
-          span.textContent = String(num).padStart(2, '0');
-          span.style.padding = "6px 10px";
-          span.style.borderRadius = "6px";
-          span.style.backgroundColor = "#333";
-          span.style.color = "#ffd700";
-          span.style.fontWeight = "bold";
-          span.style.fontSize = "16px";
-          span.style.boxShadow = "0 0 4px rgba(255, 255, 255, 0.2)";
-          dezenas.appendChild(span);
-        });
-
-        bloco.appendChild(dezenas);
-
-        const info = document.createElement("div");
-        info.textContent = `🎯 Frequência entre 4–5 acertos: ${vezesEntre4e5}`;
-        info.style.marginTop = "12px";
-        info.style.color = "#87cefa";
-        bloco.appendChild(info);
-
-        container.appendChild(bloco);
-      });
-
-      atualizarStatus(`${qtd} jogos com maior recorrência entre 4–5 acertos gerados! 🧠`, "#00ffd5");
-    })
-    .catch(err => {
-      console.error("❌ Erro ao carregar histórico:", err);
-      atualizarStatus("❌ Falha ao gerar jogos promissores.", "#ff0000");
     });
-}
 
+    // Frequência simulada
+    const frequenciaSimulada = Array(25).fill(0);
+    for (let i = 0; i < 1000; i++) {
+      const sorteados = [];
+      while (sorteados.length < 15) {
+        const n = Math.floor(Math.random() * 25) + 1;
+        if (!sorteados.includes(n)) sorteados.push(n);
+      }
+      sorteados.forEach(n => frequenciaSimulada[n - 1]++);
+    }
+
+    // Peso final
+    const pesoFinal = {};
+    for (let i = 1; i <= 25; i++) {
+      const real = frequenciaReal[i] || 0;
+      const simulado = frequenciaSimulada[i - 1] || 0;
+      pesoFinal[i] = (real * 0.5) + (simulado * 0.5);
+    }
+
+    // Geração de candidatos
+    for (let i = 0; i < 100; i++) {
+      const jogo = [];
+      while (jogo.length < 15) {
+        const n = Math.floor(Math.random() * 25) + 1;
+        if (!jogo.includes(n)) jogo.push(n);
+      }
+      jogo.sort((a, b) => a - b);
+
+      const nota = jogo.reduce((soma, n) => soma + (pesoFinal[n] || 0), 0);
+
+      let vezesEntre12e14 = 0;
+      concursosFormatados.forEach(concurso => {
+        const acertos = jogo.filter(n => concurso.includes(n)).length;
+        if (acertos >= 12 && acertos <= 14) vezesEntre12e14++;
+      });
+
+      candidatos.push({ jogo, nota, vezesEntre12e14 });
+    }
+
+    candidatos.sort((a, b) => b.vezesEntre12e14 - a.vezesEntre12e14);
+    const melhores = candidatos.slice(0, qtd);
+
+    const melhorJogo = melhores[0].jogo;
+    if (typeof preencherInputs === "function") {
+      preencherInputs(melhorJogo);
+    }
+
+    // Exibir jogos originais
+    melhores.forEach(({ jogo, vezesEntre12e14 }, index) => {
+      const bloco = document.createElement("div");
+      bloco.style.display = "flex";
+      bloco.style.flexDirection = "column";
+      bloco.style.alignItems = "center";
+      bloco.style.justifyContent = "center";
+      bloco.style.marginBottom = "20px";
+      bloco.style.padding = "12px";
+      bloco.style.border = "1px solid #888";
+      bloco.style.borderRadius = "10px";
+      bloco.style.backgroundColor = "#1e1e1e";
+      bloco.style.color = "#f0f0f0";
+
+      const titulo = document.createElement("h4");
+      titulo.textContent = `🎲 Jogo ${index + 1}`;
+      titulo.style.marginBottom = "10px";
+      titulo.style.color = "#00ffd5";
+      bloco.appendChild(titulo);
+
+      const dezenasDiv = document.createElement("div");
+      dezenasDiv.style.display = "flex";
+      dezenasDiv.style.flexWrap = "wrap";
+      dezenasDiv.style.gap = "8px";
+      dezenasDiv.style.justifyContent = "center";
+
+      jogo.forEach(num => {
+        const span = document.createElement("span");
+        span.textContent = String(num).padStart(2, '0');
+        span.style.padding = "6px 10px";
+        span.style.borderRadius = "6px";
+        span.style.backgroundColor = "#333";
+        span.style.color = "#ffd700";
+        span.style.fontWeight = "bold";
+        span.style.fontSize = "16px";
+        span.style.boxShadow = "0 0 4px rgba(255, 255, 255, 0.2)";
+        dezenasDiv.appendChild(span);
+      });
+
+      bloco.appendChild(dezenasDiv);
+
+      const info = document.createElement("div");
+      info.textContent = `🎯 Frequência entre 12–14 pts: ${vezesEntre12e14}`;
+      info.style.marginTop = "12px";
+      info.style.color = "#87cefa";
+      bloco.appendChild(info);
+
+      container.appendChild(bloco);
+    });
+
+    // 🔹 Complemento: gerar variações trocando 3 dezenas
+    function gerarVariacao(jogoBase, dezenasForaRanking) {
+      let novoJogo = [...jogoBase];
+      let posicoes = [];
+      while (posicoes.length < 3) {
+        let r = Math.floor(Math.random() * novoJogo.length);
+        if (!posicoes.includes(r)) posicoes.push(r);
+      }
+      posicoes.forEach((pos, i) => {
+        if (dezenasForaRanking[i] !== undefined) {
+          novoJogo[pos] = dezenasForaRanking[i];
+        }
+      });
+      return novoJogo.sort((a, b) => a - b);
+    }
+
+    // Definir automaticamente dezenas fora do ranking (menos frequentes)
+    const ordenadasPorFreq = Object.entries(frequenciaReal)
+      .sort((a, b) => a[1] - b[1])
+      .map(([num]) => parseInt(num, 10));
+    const dezenasForaRanking = ordenadasPorFreq.slice(0, 5); // pega as 5 menos frequentes
+
+    const jogosVariados = melhores.map(m => gerarVariacao(m.jogo, dezenasForaRanking));
+
+        jogosVariados.forEach((jogo, index) => {
+      const bloco = document.createElement("div");
+      bloco.style.marginBottom = "20px";
+      bloco.style.padding = "12px";
+      bloco.style.border = "1px dashed #aaa";
+      bloco.style.borderRadius = "10px";
+      bloco.style.backgroundColor = "#2a2a2a";
+      bloco.style.color = "#f0f0f0";
+
+      const titulo = document.createElement("h4");
+      titulo.textContent = `✨ Variação ${index + 1}`;
+      titulo.style.marginBottom = "10px";
+      titulo.style.color = "#ff69b4";
+      bloco.appendChild(titulo);
+
+      const dezenasDiv = document.createElement("div");
+      dezenasDiv.style.display = "flex";
+      dezenasDiv.style.flexWrap = "wrap";
+      dezenasDiv.style.gap = "8px";
+      dezenasDiv.style.justifyContent = "center";
+
+      jogo.forEach(num => {
+        const span = document.createElement("span");
+        span.textContent = String(num).padStart(2, '0');
+        span.style.padding = "6px 10px";
+        span.style.borderRadius = "6px";
+        span.style.backgroundColor = "#444";
+        span.style.color = "#00ffd5";
+        span.style.fontWeight = "bold";
+        span.style.fontSize = "16px";
+        span.style.boxShadow = "0 0 4px rgba(0, 255, 213, 0.4)";
+        dezenasDiv.appendChild(span);
+      });
+
+      bloco.appendChild(dezenasDiv);
+
+      const info = document.createElement("div");
+      info.textContent = "🔄 Jogo gerado com 3 dezenas trocadas (fora do ranking principal)";
+      info.style.marginTop = "12px";
+      info.style.color = "#87cefa";
+      bloco.appendChild(info);
+
+      container.appendChild(bloco);
+    });
+
+    atualizarStatus(`${qtd} jogos com maior recorrência entre 12 e 14 pontos gerados, incluindo variações! 🧠`, "#00ffd5");
+  } catch (err) {
+    console.error("❌ Erro ao carregar histórico:", err);
+    atualizarStatus("❌ Falha ao gerar jogos promissores.", "#ff0000");
+  }
+}
+	  
+	  
+	  
+
+// 🔹 Expor no escopo global para funcionar com onclick no HTML
+//window.gerarJogosPromissores = gerarJogosPromissores;
   // ✅ Registro global de funções
   document.addEventListener("DOMContentLoaded", () => {
     window.sortearComLogica = sortearComLogica;
@@ -2630,13 +3206,17 @@ resultado.appendChild(inspiracao);
     window.verTriosMaisComuns = verTriosMaisComuns;
     window.avaliarConjuntoPython = avaliarConjuntoPython;
     window.gerarSugestao = gerarSugestao;
-	window.jogoFixo
+	
 	
     window.sortearComFrequencia = sortearComFrequencia;
 	
     window.prepararPromissor = prepararPromissor;
     window.logicaGanhadorBitcoin = logicaGanhadorBitcoin;
     window.buscarConcursoEspecifico = buscarConcursoEspecifico;
+	
+
+	
+
 
     // Funções auxiliares
     window.limparInterfaceCompleta = limparInterfaceCompleta;
@@ -2654,7 +3234,7 @@ resultado.appendChild(inspiracao);
     window.reiniciarBarra = reiniciarBarra;
     window.atualizarBarra = atualizarBarra;
     window.finalizarBarra = finalizarBarra;
-	window.sortearComFrequencia = sortearComFrequencia;
+	
 
     // ✅ Inicializações seguras
     //atualizarConcursos(); // mantém apenas o que é necessário
